@@ -7,6 +7,9 @@
 
 	<package name="struts2" extends="struts-default">
 
+		<action name="index">
+			<result>/index.jsp</result>
+		</action>
 		
 
 	</package>
