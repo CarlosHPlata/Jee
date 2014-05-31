@@ -16,16 +16,9 @@ public class Prueba {
 		
 		DAOProducts products=new DAOProducts();
 		
-		Product nuevo=new Product(2, "GTA V", "El nuevo juego por parte de rockstar games vuelve a los santos", 1500, 0, 500, new Date());
+		Product product=products.getProduct(1);
 		
-		DAOConsoles con=new DAOConsoles();
-		
-		nuevo.getConsoles().add(con.getConsole(1));
-		
-		products.createProduct(nuevo);
-		
-		
-		System.out.println("lol");
+		System.out.println(product.getConsoles().size());
 		
 	}
 

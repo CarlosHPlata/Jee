@@ -40,18 +40,36 @@ public class MAdmin extends MUser{
 	}
 	
 	public boolean updateProduct(Product product){
-		return false;
+		DAOProducts daop=new DAOProducts();
+		
+		//Actualizando la base de datos
+		daop.updateProduct(product);
+		
+		return true;
 	}
 	
 	public boolean deleteProduct(Product product){
+		DAOProducts daop=new DAOProducts();
+		
+		//Actualizando la base de datos
+		daop.deleteProduct(product);
 		return false;
 	}
 	
 	public Product getProduct(int idProduct){
+		DAOProducts daop=new DAOProducts();
+		
+		//Actualizando bd
+		daop.getProduct(idProduct);
+		
 		return null;
 	}
 	
 	public List<Product> getCatalog(){
+		DAOProducts daop=new DAOProducts();
+		
+		//obteniendo info de la base de datos
+		daop.getAllProducts();
 		return null;
 	}
 	
