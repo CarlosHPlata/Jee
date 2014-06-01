@@ -16,17 +16,12 @@ public class Prueba {
 
 	public static void main(String[] args) {
 		
-		DAOUsuarios dau=new DAOUsuarios();
-		DAOConsoles cns=new DAOConsoles();
+		DAOProducts prd= new DAOProducts();
 		
-		Console console=cns.getConsole(1);
+		List<Product> prds=prd.getAllProducts();
 		
-		MAdmin admin=(MAdmin)dau.getUserById(1, true);
-		
-		List<Product> prd=admin.getCatalogByConsole(console);
-		
-		for(int i=0; i<prd.size(); i++){
-			System.out.println(prd.get(i).getName());
+		for(int i=0; i<prds.size(); i++){
+			System.out.println(prds.get(i).getImage());
 		}
 		
 	}
