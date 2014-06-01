@@ -1,13 +1,20 @@
 package model.roles;
 
+import java.time.Year;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.HibernateException;
+
 import dataAccess.DAOs.DAOConsoles;
 import dataAccess.DAOs.DAOProducts;
+import dataAccess.DAOs.DAOShoppingCarAndHistory;
 import dataAccess.DAOs.DAOUsuarios;
 import dataAccess.Entities.Console;
 import dataAccess.Entities.Product;
+import dataAccess.Entities.Shoppingcarhistory;
 
 public class MAdmin extends MUser{
 
@@ -176,8 +183,92 @@ public class MAdmin extends MUser{
 		return daoc.getAllConsoles();
 	}
 	
-	public List getProductEstadistics(Product product){
-		return null;
+	
+	@SuppressWarnings("deprecation")
+	public String ageRangeSolds(Product product){
+		DAOShoppingCarAndHistory daohist= new DAOShoppingCarAndHistory();
+		DAOProducts daoProduct=new DAOProducts();
+		
+		List<Shoppingcarhistory> history=daohist.getAllHistorys();
+		
+		List<Shoppingcarhistory> allBuyedProduct=new ArrayList<Shoppingcarhistory>();;
+		
+		for(int i=0; i<history.size(); i++){
+			Product temp=daoProduct.getProduct( history.get(i).getId().getProductIdProduct() );
+			if(temp.getIdProduct()==product.getIdProduct()){
+				allBuyedProduct.add(history.get(i));
+			}
+		}
+		
+		int minAge=0;
+		int temp;
+		for(int i=0; i<allBuyedProduct.size(); i++){
+			long ageInMillis = new Date().getTime() - getBirthDate().getTime();
+			Date age = new Date(ageInMillis);
+			if(age.getYear()<minAge || minAge==0){
+				minAge=age.getYear();
+			}
+		}
+		
+		int maxAge=0;
+		for(int i=0; i<allBuyedProduct.size(); i++){
+			long ageInMillis = new Date().getTime() - getBirthDate().getTime();
+			Date age = new Date(ageInMillis);
+			if(age.getYear()>maxAge || maxAge==0){
+				minAge=age.getYear();
+			}
+		}
+		
+		return minAge+"-"+maxAge;
 	}
+	
+	public double getSoldPercentage(Product product){
+		DAOShoppingCarAndHistory daohist= new DAOShoppingCarAndHistory();
+		DAOProducts daoProduct=new DAOProducts();
+		
+		List<Shoppingcarhistory> history=daohist.getAllHistorys();
+		List<Shoppingcarhistory> historyToCreation=new ArrayList<Shoppingcarhistory>();
+		
+		for(int i=0; i<history.size(); i++){
+			Product temp=daoProduct.getProduct( history.get(i).getId().getProductIdProduct() );
+			if(temp.getCreationDate().compareTo(product.getCreationDate())>=0){
+				historyToCreation.add(history.get(i));
+			}
+		}
+		
+		List<Shoppingcarhistory> allBuyedProduct=new ArrayList<Shoppingcarhistory>();;
+		
+		for(int i=0; i<history.size(); i++){
+			Product temp=daoProduct.getProduct( history.get(i).getId().getProductIdProduct() );
+			if(temp.getIdProduct()==product.getIdProduct()){
+				allBuyedProduct.add(history.get(i));
+			}
+		}
+		
+		double soldPercentage=(allBuyedProduct.size()*100)/history.size();
+		
+		return soldPercentage;
+	}
+	
+	public double getNumberOfSolds(Product product){
+
+		DAOShoppingCarAndHistory daohist= new DAOShoppingCarAndHistory();
+		DAOProducts daoProduct=new DAOProducts();
+		
+		List<Shoppingcarhistory> history=daohist.getAllHistorys();
+		
+		List<Shoppingcarhistory> allBuyedProduct=new ArrayList<Shoppingcarhistory>();;
+		
+		for(int i=0; i<history.size(); i++){
+			Product temp=daoProduct.getProduct( history.get(i).getId().getProductIdProduct() );
+			if(temp.getIdProduct()==product.getIdProduct()){
+				allBuyedProduct.add(history.get(i));
+			}
+		}
+		
+		double timesSold=allBuyedProduct.size();
+		return timesSold;
+	}
+	
 	
 }
