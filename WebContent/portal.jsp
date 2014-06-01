@@ -5,9 +5,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Bienvenido</title>
 </head>
 <body>
-	<h1>Bienvenido <s:property value="#session['muser']"/> </h1>
+	<h1>Bienvenido <s:property value="#session['muser'].name"/> </h1>
+	
+	<p>
+		<a href="editInfoPersonalMUser">Editar tu información personal</a>
+	</p>
+	<p>
+		<a href="editLoginPasswordMUser">Cambiar tu nombre de usuario y contraseña</a>
+	</p>
+	
 </body>
 </html>
