@@ -9,16 +9,16 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-4">
               <center>
-              <a class="btn btn-social-icon btn-facebook">
+              <a href="https://www.facebook.com/carlos.herreraplata" target="_blank" class="btn btn-social-icon btn-facebook">
                 <i class="fa fa-facebook"></i>
               </a>
-              <a class="btn btn-social-icon btn-twitter">
+              <a href="https://www.facebook.com/goregeorge" target="_blank" class="btn btn-social-icon btn-twitter">
                 <i class="fa fa-twitter"></i>
               </a>
-              <a class="btn btn-social-icon btn-youtube">
+              <a href="https://www.facebook.com/carlos.herreraplata" target="_blank" class="btn btn-social-icon btn-youtube">
                 <i class="fa fa-youtube"></i>
               </a>
-              <a class="btn btn-social-icon btn-pinterest">
+              <a href="https://www.facebook.com/goregeorge" target="_blank" class="btn btn-social-icon btn-pinterest">
                 <i class="fa fa-pinterest"></i>
               </a>
               </center>
