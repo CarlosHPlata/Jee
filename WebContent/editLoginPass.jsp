@@ -5,17 +5,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Bienvenido</title>
+<title>Edita tu Login</title>
 </head>
 <body>
-	<h1>Bienvenido <s:property value="#session['muser'].name"/> </h1>
-	
-	<p>
-		<a href="editInfoPersonalMUser">Editar tu información personal</a>
-	</p>
-	<p>
-		<a href="editLoginPasswordMUser">Cambiar tu nombre de usuario y contraseña</a>
-	</p>
+	<s:form action="updateUsernamePasswordMUser">
+		<s:textfield name="userName" label="Nombre de usuario" value="%{#session['muser'].userName}"/>
+		<s:password name="passWord" label="Contraseña" value="%{#session['muser'].passWord}" showPassword="true"/>
+		<s:submit value="Actualizar"/>
+	</s:form>
 	
 </body>
 </html>

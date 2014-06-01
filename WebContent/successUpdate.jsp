@@ -5,16 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Bienvenido</title>
+<title>¡Éxito!</title>
 </head>
 <body>
-	<h1>Bienvenido <s:property value="#session['muser'].name"/> </h1>
+	<h1>Tu información ha sido actualizada <s:property value="#session['muser'].name"/></h1>
 	
 	<p>
-		<a href="editInfoPersonalMUser">Editar tu información personal</a>
-	</p>
-	<p>
-		<a href="editLoginPasswordMUser">Cambiar tu nombre de usuario y contraseña</a>
+		<a href="portal.jsp">regresar a tu portal</a>
 	</p>
 	
 </body>
