@@ -22,6 +22,25 @@ public class DAOUsuarios extends DAO{
 		return getMUserFromEntitie(result);
 	}
 	
+	public MUser getUser(String userName, String passWord){
+		List<MUser> all=getAllUsers();
+		
+		MUser result=null;
+		MUser temp;
+		for(int i=0; i<all.size(); i++){
+			temp=all.get(i);
+			if(temp.getUserName().equals(userName)){
+				result=temp;
+				break;
+			}
+		}
+		
+		if(result!=null && result.getPassWord().equals(passWord)){
+			return result;
+		}else return null;
+		
+	}
+	
 	public List<MUser> getAllUsers(){
 		List<User> users = getAll(User.class);
 		
