@@ -6,9 +6,15 @@
 	<constant name="struts.devMode" value="true" />
 
 	<package name="struts2" extends="struts-default">
-
+	
 		<action name="index">
 			<result>/index.jsp</result>
+		</action>
+
+
+		<action name="*MUser" class="struct.actions.MUserAction" method="{1}">
+			<result name="input">/index.jsp</result>
+			<result name="portal">/portal.jsp</result>
 		</action>
 		
 
