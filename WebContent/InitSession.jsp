@@ -11,7 +11,8 @@
 
 	<%@ include file="includes/header.php" %>
 
- 	<div class="row">
+ 	<div class="row" style="padding-top: 10%; margin-bottom: 10%">
+ 	<div class="col-md-3 col-md-offset-4" style="background-color: #555; padding: 5px; border-radius:10px">
  		<s:head/>
 	
 		<s:actionerror/>
@@ -22,6 +23,10 @@
 			<s:submit value="Entrar"/>
 		</s:form>
  	</div>
+ 	</div>
+ 	
+ 	 <!-- /END THE FEATURETTES -->
+      <%@ include file="includes/footer.php" %>
 
 </body>
 </html>
