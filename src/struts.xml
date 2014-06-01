@@ -15,6 +15,9 @@
 		<action name="*MUser" class="struct.actions.MUserAction" method="{1}">
 			<result name="input">/index.jsp</result>
 			<result name="portal">/portal.jsp</result>
+			<result name="editInfo">/editInfoPersonal.jsp</result>
+	    	<result name="editLoginPass">/editLoginPass.jsp</result>
+	    	<result name="success_update">/successUpdate.jsp</result>
 		</action>
 		
 

@@ -5,17 +5,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Iniciar Sesión</title>
+<title>Edita tu Información</title>
 </head>
 <body>
-	<s:head/>
-	
-	<s:actionerror/>
-	
-	<s:form action="loginMUser">
-		<s:textfield name="userName" label="Nombre de usario"/>
-		<s:password name="passWord" label="Contrasena"/>
-		<s:submit value="Entrar"/>
+	<s:form action="updateInfoPersonalMUser">
+		<s:textfield name="name" label="Nombres" value="%{#session['muser'].name}"/>
+		<s:textfield name="lastName" label="Apellidos" value="%{#session['muser'].lastName}"/>
+		<s:textfield name="email" label="Correo Electrónico" value="%{#session['muser'].email}"/>
+		<s:submit value="Actualizar"/>
 	</s:form>
 </body>
 </html>
