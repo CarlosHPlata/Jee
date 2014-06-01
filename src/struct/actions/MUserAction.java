@@ -29,13 +29,41 @@ public class MUserAction extends ActionSupport implements SessionAware {
 		MUser muser=daou.getUser(userName, passWord);
 		
 		if(muser!=null){
-			mapSession.put("muser", muser.getName());
+			mapSession.put("muser", muser);
 			return "portal";
 		}else{
 			addActionError("invalido el usuario");
 			return INPUT;
 		}
 	}
+	
+	public String editInfoPersonal() throws Exception {
+		return "editInfo";
+	}
+	
+	public String updateInfoPersonal() throws Exception {
+		MUser muser = (MUser)mapSession.get("muser");
+		muser.setName(getName());
+		muser.setLastName(getLastName());
+		muser.setEmail(getEmail());
+		DAOUsuarios daou=new DAOUsuarios();
+		daou.updateUser(muser);
+		return "success_update";
+	}
+	
+	public String editLoginPassword() throws Exception {
+		return "editLoginPass";
+	}
+	
+	public String updateUsernamePassword() throws Exception {
+		MUser muser = (MUser)mapSession.get("muser");
+		muser.setUserName(getUserName());
+		muser.setPassWord(getPassWord());
+		DAOUsuarios daou=new DAOUsuarios();
+		daou.updateUser(muser);
+		return "success_update";
+	}
+
 
 	public Map<String, Object> getMapSession() {
 		return mapSession;
