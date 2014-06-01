@@ -31,12 +31,12 @@ public class MAdmin extends MUser{
 	}
 	
 	
-	public Product createProduct(String name, String description, float prize, int quantity, List<Console> consoles){
+	public Product createProduct(String name, String description, float prize, int quantity, String imageRute, List<Console> consoles){
 		DAOProducts daop=new DAOProducts();
 		int id=daop.getAllProducts().size()+1;
 		
 		//Creando nuevo producto
-		Product product=new Product(id, name, description, prize, 0, quantity, new Date());
+		Product product=new Product(id, name, description, prize, 0, quantity, new Date(), imageRute);
 		
 		for(int i=0; i<consoles.size(); i++){
 			product.getConsoles().add(consoles.get(i));
