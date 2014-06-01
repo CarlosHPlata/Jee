@@ -34,8 +34,10 @@ public class DAOUsuarios extends DAO{
 		return resultUsers;
 	}
 	
-	public void createUser(MUser user){
-		create( getEntitieFromMUser(user) );
+	public MUser createUser(MUser user){
+		User newUser=getEntitieFromMUser(user);
+		create(newUser);
+		return getUserById(newUser.getId().getIdUser(), newUser.getId().isType());
 	}
 	
 	public void updateUser(MUser user){
@@ -48,13 +50,13 @@ public class DAOUsuarios extends DAO{
 		delete( getEntitieFromMUser(userdelete) );
 	}
 	
-	public List<MUser> getAllCliets(){
+	public List<MClient> getAllCliets(){
 		List<MUser> all=getAllUsers();
-		List<MUser> result=new ArrayList<MUser>();
+		List<MClient> result=new ArrayList<MClient>();
 		
 		for(int i=0; i<all.size(); i++){
 			if(!all.get(i).isAdmin()){
-				result.add(all.get(i));
+				result.add((MClient)all.get(i));
 			}
 		}
 		

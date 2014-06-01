@@ -6,6 +6,7 @@ import java.util.List;
 import dataAccess.DAOs.DAOConsoles;
 import dataAccess.DAOs.DAOProducts;
 import dataAccess.DAOs.DAOUsuarios;
+import dataAccess.Entities.Console;
 import dataAccess.Entities.Product;
 import dataAccess.Entities.Wishlist;
 
@@ -15,17 +16,13 @@ public class Prueba {
 		
 		
 		DAOProducts products=new DAOProducts();
+		DAOConsoles cons=new DAOConsoles();
 		
-		Product nuevo=new Product(2, "GTA V", "El nuevo juego por parte de rockstar games vuelve a los santos", 1500, 0, 500, new Date());
+		Console console=cons.getConsole(1);
 		
-		DAOConsoles con=new DAOConsoles();
+		Product product=products.getProduct(1);
 		
-		nuevo.getConsoles().add(con.getConsole(1));
-		
-		products.createProduct(nuevo);
-		
-		
-		System.out.println("lol");
+		System.out.println(product.getConsoles().contains(console));
 		
 	}
 
