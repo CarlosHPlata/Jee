@@ -4,6 +4,7 @@ import java.time.Year;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -75,7 +76,18 @@ public class MAdmin extends MUser{
 	}
 	
 	public List<Product> getCatalogByConsole(Console console){
-		return null;
+		DAOConsoles daocns=new DAOConsoles();
+		ArrayList<Product> products=new ArrayList<Product>();
+		
+		Console cons= daocns.getConsole(console.getIdConsole());
+		
+		Iterator<Product> prd=cons.getProducts().iterator();
+		
+		while(prd.hasNext()){
+			products.add(prd.next());
+		}
+		
+		return products;
 	}
 	
 	public MUser createUser(int id, boolean isAdmin, String userName, String passWord,	String name, String lastName, String email, Date birthDate){

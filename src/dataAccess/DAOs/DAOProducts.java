@@ -2,7 +2,11 @@ package dataAccess.DAOs;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+
 import model.roles.MUser;
+import dataAccess.Entities.Console;
 import dataAccess.Entities.Product;
 
 public class DAOProducts extends DAO{
