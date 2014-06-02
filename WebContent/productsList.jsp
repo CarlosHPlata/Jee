@@ -11,36 +11,38 @@
 
 	<%@ include file="includes/header.php" %>
 
- 	<div class="row" style="padding-top: 10%; margin-bottom: 10%">
- 	<div class="col-md-10 col-md-offset-1" style="background-color: #555; padding: 5px; border-radius:10px">
- 		<table class="table">
-                <thead>
-                  <tr>
-                    <th>Clave de Producto</th>
-                    <th>Nombre</th>
-                    <th>Precio</th>
-                    <th>Estrellas</th>
-                    <th>Cantidad</th>
-                    <th>Fecha de creaci&oacute;n</th>
-                    <th>Acciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                  	<th>1</th>
-                    <th><a href="#">Halo 5</a></th>
-                    <th>$Infinito + 1</th>
-                    <th>5</th>
-                    <th>21093</th>
-                    <th>2014-05-30</th>
-                    <th><a href="#">Editar Borrar</a></th>
-                  </tr>
-                </tbody>
-              	</table>
- 	</div>
- 	</div>
- 	
- 	 <!-- /END THE FEATURETTES -->
+	<div class="row" style="padding-top: 10%; margin-bottom: 10%">
+		<div class="col-md-10 col-md-offset-1"style="background-color: #555; padding: 5px; border-radius: 10px">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Clave de Producto</th>
+						<th>Nombre</th>
+						<th>Precio</th>
+						<th>Estrellas</th>
+						<th>Cantidad</th>
+						<th>Fecha de creaci&oacute;n</th>
+						<th>Acciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					<s:iterator value="products">
+						<tr>
+							<th><s:property value="idProduct" /></th>
+							<th><a href="#"><s:property value="name" /></a></th>
+							<th><s:property value="prize" /></th>
+							<th><s:property value="stars" /></th>
+							<th><s:property value="quantity" /></th>
+							<th><s:property value="creationDate" /></th>
+							<th><a href="#">Editar Borrar</a></th>
+						</tr>
+					</s:iterator>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<!-- /END THE FEATURETTES -->
       <%@ include file="includes/footer.php" %>
 
 </body>

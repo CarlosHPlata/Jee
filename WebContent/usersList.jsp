@@ -8,7 +8,6 @@
 <title>Lista de Usuarios</title>
 </head>
 <body>
-
 	<%@ include file="includes/header.php" %>
 
 	<div class="row" style="padding-top: 10%; margin-bottom: 10%">
@@ -27,8 +26,8 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<s:iterator value="users">
+					<s:iterator value="users">
+						<tr>
 							<th><s:property value="id" /></th>
 							<th><a href="#"><s:property value="userName" /></a></th>
 							<th><s:property value="passWord" /></th>
@@ -37,8 +36,8 @@
 							<th><s:property value="email" /></th>
 							<th><s:property value="birthDate" /></th>
 							<th><a href="#">Editar Borrar</a></th>
-						</s:iterator>
-					</tr>
+						</tr>
+					</s:iterator>
 				</tbody>
 			</table>
 		</div>
@@ -46,5 +45,6 @@
 
 	<!-- /END THE FEATURETTES -->
     <%@ include file="includes/footer.php" %>
+    
 </body>
 </html>

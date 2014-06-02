@@ -22,11 +22,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                  	<th>1</th>
-                    <th><a href="#">Nintendo 3DS</a></th>
-                    <th><a href="#">Editar Borrar</a></th>
-                  </tr>
+                	<s:iterator value="consoles">
+						<tr>
+							<th><s:property value="idConsole" /></th>
+							<th><a href="#"><s:property value="company" /></a></th>
+							<th><a href="#">Editar Borrar</a></th>
+						</tr>
+					</s:iterator>
                 </tbody>
               	</table>
  	</div>

@@ -26,15 +26,17 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                  	<th>1</th>
-                    <th><a href="#">Halo 5</a></th>
-                    <th>2014-05-30</th>
-                    <th>5</th>
-                    <th>$Infinito + 1</th>
-                    <th>$?????</th>
-                    <th><a href="#">Editar Borrar</a></th>
-                  </tr>
+                  <s:iterator value="cart">
+						<tr>
+							<th><s:property value="id" /></th>
+							<th><s:property value="name" /></a></th>
+							<th><s:property value="date" /></th>
+							<th><s:property value="quantity" /></th>
+							<th><s:property value="prize" /></th>
+							<th><s:property value="total" /></th>
+							<th><a href="#">Borrar</a></th>
+						</tr>
+					</s:iterator>
                 </tbody>
           </table>
           <div class="col-md-11"></div>
