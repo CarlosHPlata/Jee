@@ -20,6 +20,11 @@
 	    	<result name="success_update">/successUpdate.jsp</result>
 		</action>
 		
+		<action name="*MAdmin" class="struct.actions.MAdminAction" method="{1}">
+			<result name="displayUsersList">/usersList.jsp</result>
+			<result name="displayProductsList">/productsList.jsp</result>
+			<result name="displayConsolesList">/consolesList.jsp</result>
+		</action>
 
 	</package>
 	
