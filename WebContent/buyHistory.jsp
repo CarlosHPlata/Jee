@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Carrito de Compras</title>
+<title>Historial de Compras</title>
 </head>
 <body>
 
@@ -26,13 +26,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                	<s:iterator value="history">
+                	<s:iterator value="buyhistory">
 						<tr>
 							<th><s:property value="id" /></th>
-							<th><s:property value="product" /></a></th>
+							<th><s:property value="product.name" /></th>
 							<th><s:property value="date" /></th>
 							<th><s:property value="quantity" /></th>
-							<th><s:property value="prize" /></th>
+							<th><s:property value="product.prize" /></th>
 							<th><s:property value="total" /></th>
 							<th><a href="#">Borrar</a></th>
 						</tr>

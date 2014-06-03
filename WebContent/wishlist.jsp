@@ -26,10 +26,10 @@
                 <tbody>
                   <s:iterator value="wishlist">
 						<tr>
-							<th><s:property value="product" /></a></th>
-							<th><s:property value="quantity" /></th>
-							<th><s:property value="prize" /></th>
-							<th><s:property value="total" /></th>
+							<th><s:property value="product.name"/></th>
+							<th><s:property value="quantity"/></th>
+							<th><s:property value="product.prize"/></th>
+							<th><s:property value="product.prize*quantity"/></th>
 							<th><a href="#">Borrar</a></th>
 						</tr>
 					</s:iterator>

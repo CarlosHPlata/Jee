@@ -26,13 +26,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <s:iterator value="cart">
+                  <s:iterator value="shoppingcart">
 						<tr>
 							<th><s:property value="id" /></th>
-							<th><s:property value="name" /></a></th>
+							<th><s:property value="product.name" /></th>
 							<th><s:property value="date" /></th>
 							<th><s:property value="quantity" /></th>
-							<th><s:property value="prize" /></th>
+							<th><s:property value="product.prize" /></th>
 							<th><s:property value="total" /></th>
 							<th><a href="#">Borrar</a></th>
 						</tr>

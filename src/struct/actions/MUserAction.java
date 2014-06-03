@@ -1,7 +1,9 @@
 package struct.actions;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import model.roles.MUser;
 
@@ -9,7 +11,12 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import dataAccess.DAOs.DAOProducts;
+import dataAccess.DAOs.DAOShoppingCarAndHistory;
 import dataAccess.DAOs.DAOUsuarios;
+import dataAccess.DAOs.DAOWishList;
+import dataAccess.Entities.Shoppingcarhistory;
+import dataAccess.Entities.Wishlist;
 
 public class MUserAction extends ActionSupport implements SessionAware {
 
@@ -23,6 +30,9 @@ public class MUserAction extends ActionSupport implements SessionAware {
 	private String lastName;
 	private String email;
 	private Date birthDate;
+	private List<Wishlist> wishlist;
+	private List<Shoppingcarhistory> shoppingcart;
+	private List<Shoppingcarhistory> buyhistory;
 	
 	public String login() throws Exception{
 		DAOUsuarios daou=new DAOUsuarios();
@@ -63,7 +73,39 @@ public class MUserAction extends ActionSupport implements SessionAware {
 		daou.updateUser(muser);
 		return "success_update";
 	}
-
+	
+	public String displayWishList() throws Exception{
+		MUser muser = (MUser)mapSession.get("muser");
+		DAOWishList daow = new DAOWishList();
+		DAOProducts daop = new DAOProducts();
+		wishlist = daow.getWishListFromUser(muser);
+		for (int i = 0; i < wishlist.size(); i++) {
+			wishlist.get(i).setProduct(daop.getProduct(wishlist.get(i).getProduct().getIdProduct()));
+		}
+		return "displayWishList";
+	}
+	
+	public String displayShoppingCart() throws Exception{
+		MUser muser = (MUser)mapSession.get("muser");
+		DAOShoppingCarAndHistory daoc = new DAOShoppingCarAndHistory();
+		DAOProducts daop = new DAOProducts();
+		shoppingcart = daoc.getShoppingCar(muser);
+		for (int i = 0; i < shoppingcart.size(); i++) {
+			shoppingcart.get(i).setProduct(daop.getProduct(shoppingcart.get(i).getProduct().getIdProduct()));
+		}
+		return "displayShoppingCart";
+	}
+	
+	public String displayBuyHistory() throws Exception{
+		MUser muser = (MUser)mapSession.get("muser");
+		DAOShoppingCarAndHistory daoh = new DAOShoppingCarAndHistory();
+		DAOProducts daop = new DAOProducts();
+		buyhistory = daoh.getHistory(muser);
+		for (int i = 0; i < buyhistory.size(); i++) {
+			buyhistory.get(i).setProduct(daop.getProduct(buyhistory.get(i).getProduct().getIdProduct()));
+		}
+		return "displayBuyHistory";
+	}
 
 	public Map<String, Object> getMapSession() {
 		return mapSession;
@@ -136,6 +178,29 @@ public class MUserAction extends ActionSupport implements SessionAware {
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
-	
+
+	public List<Wishlist> getWishlist() {
+		return wishlist;
+	}
+
+	public void setWishlist(List<Wishlist> wishlist) {
+		this.wishlist = wishlist;
+	}
+
+	public List<Shoppingcarhistory> getShoppingcart() {
+		return shoppingcart;
+	}
+
+	public void setShoppingcart(List<Shoppingcarhistory> shoppingcart) {
+		this.shoppingcart = shoppingcart;
+	}
+
+	public List<Shoppingcarhistory> getBuyhistory() {
+		return buyhistory;
+	}
+
+	public void setBuyhistory(List<Shoppingcarhistory> buyhistory) {
+		this.buyhistory = buyhistory;
+	}
 	
 }

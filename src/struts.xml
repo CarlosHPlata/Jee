@@ -18,6 +18,9 @@
 			<result name="editInfo">/editInfoPersonal.jsp</result>
 	    	<result name="editLoginPass">/editLoginPass.jsp</result>
 	    	<result name="success_update">/successUpdate.jsp</result>
+	    	<result name="displayWishList">/wishlist.jsp</result>
+	    	<result name="displayShoppingCart">/shoppingCart.jsp</result>
+	    	<result name="displayBuyHistory">/buyHistory.jsp</result>
 		</action>
 		
 		<action name="*MAdmin" class="struct.actions.MAdminAction" method="{1}">
