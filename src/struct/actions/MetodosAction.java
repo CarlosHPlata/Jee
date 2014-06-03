@@ -5,10 +5,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
+
 import model.roles.MUser;
 
+import org.apache.catalina.connector.Request;
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import dataAccess.DAOs.DAOConsoles;
@@ -41,7 +45,13 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 	
 	
 	public String index() throws Exception{
+		this.consoles=(new DAOConsoles()).getAllConsoles();
+		this.products=(new DAOProducts()).getAllProducts();
 		return "index";
+	}
+	
+	public String init() throws Exception{
+		return INPUT;
 	}
 	
 	public String login() throws Exception{
@@ -50,11 +60,17 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 		
 		if(muser!=null){
 			mapSession.put("muser", muser);
-			return "portal";
+			return "index";
 		}else{
 			addActionError("invalido el usuario");
 			return INPUT;
 		}
+	}
+	
+	public String logout() throws Exception{
+		Map session = ActionContext.getContext().getSession();
+		session.remove("muser");
+		return "index";
 	}
 	
 	public String editInfoPersonal() throws Exception {
@@ -218,7 +234,7 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 	 */
 	private List<MUser> users;
 	private List<Product> products;
-	private List<Console> consoles;
+	private List<Console> consoles=(new DAOConsoles()).getAllConsoles();
 	
 	public String listUsers() throws Exception{
 		DAOUsuarios daousers = new DAOUsuarios();
@@ -260,6 +276,29 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 
 	public void setConsoles(List<Console> consoles) {
 		this.consoles = consoles;
+	}
+	
+	
+	//ACCIONES DEL CATALOGO	
+	
+	public String catalog() throws Exception{
+		this.products=(new DAOProducts()).getAllProducts();
+		return "catalog";
+	}
+	
+	public String catalogByConsole() throws Exception{
+		String[] temp=(String[]) ActionContext.getContext().getParameters().get("idConsole");
+		String idConsole="";
+		for(int i=0; i<temp.length;i++){
+			idConsole+=temp[i];
+		}
+		
+		Console console=(new DAOConsoles()).getConsole(Integer.valueOf(idConsole));
+		
+		DAOProducts daoprod=new DAOProducts();
+		
+		this.products=daoprod.getCatalogByConsole(console);
+		return "catalog";
 	}
 	
 }

@@ -13,7 +13,7 @@ import dataAccess.Entities.ShoppingcarhistoryId;
 public class DAOShoppingCarAndHistory extends DAO{
 
 	public Shoppingcarhistory getRegistryById(int idCart, MUser user, Product product){
-		ShoppingcarhistoryId id=new ShoppingcarhistoryId(user.getId(), user.isAdmin(), product.getIdProduct(), idCart);
+		ShoppingcarhistoryId id=new ShoppingcarhistoryId(user.getId(), user.isType(), product.getIdProduct(), idCart);
 		
 		Session s=getSession();
 		Shoppingcarhistory result=(Shoppingcarhistory) s.get(Shoppingcarhistory.class, id);

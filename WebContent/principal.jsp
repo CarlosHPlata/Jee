@@ -19,7 +19,10 @@
 </head>
 <body>
 
-<%@ include file="includes/header.php" %>
+
+	<%@ include file="includes/header.jsp" %>
+
+
     <!-- Carousel
     ================================================== -->
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
