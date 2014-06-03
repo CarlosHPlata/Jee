@@ -17,11 +17,13 @@
 	
 		<s:actionerror/>
 		
-		<s:form action="loginMUser">
-			<s:textfield name="userName" label="Nombre de usuario"/>
-			<s:password name="passWord" label="Contrasena"/>
-			<s:submit value="Entrar"/>
+		
+		<s:form action="loginAction">
+			<s:textfield cssClass="form-control" name="userName" label="Nombre de usuario"/>
+			<s:password cssClass="form-control" name="passWord" label="Contraseña"/>
+			<s:submit value="Entrar" cssClass="btn btn-default"/>
 		</s:form>
+		
  	</div>
  	</div>
  	

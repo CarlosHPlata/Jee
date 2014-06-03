@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Lista de Usuarios</title>
+<title>Detalle de Producto</title>
 </head>
 <body>
 

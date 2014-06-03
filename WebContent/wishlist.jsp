@@ -24,13 +24,15 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th><a href="#">Mighty No. 9</a></th>
-                    <th>120398</th>
-                    <th>$Infinito + 1</th>
-                    <th>$?????</th>
-                    <th><a href="#">Editar Borrar</a></th>
-                  </tr>
+                  <s:iterator value="wishlist">
+						<tr>
+							<th><s:property value="product.name"/></th>
+							<th><s:property value="quantity"/></th>
+							<th><s:property value="product.prize"/></th>
+							<th><s:property value="product.prize*quantity"/></th>
+							<th><a href="#">Borrar</a></th>
+						</tr>
+					</s:iterator>
                 </tbody>
               	</table>
  	</div>

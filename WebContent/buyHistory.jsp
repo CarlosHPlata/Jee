@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Carrito de Compras</title>
+<title>Historial de Compras</title>
 </head>
 <body>
 
@@ -26,15 +26,17 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                  	<th>1</th>
-                    <th><a href="#">Halo 5</a></th>
-                    <th>2014-05-30</th>
-                    <th>5</th>
-                    <th>$Infinito + 1</th>
-                    <th>$?????</th>
-                    <th><a href="#">Editar Borrar</a></th>
-                  </tr>
+                	<s:iterator value="buyhistory">
+						<tr>
+							<th><s:property value="id.idcart" /></th>
+							<th><s:property value="product.name" /></th>
+							<th><s:property value="date" /></th>
+							<th><s:property value="quantity" /></th>
+							<th><s:property value="product.prize" /></th>
+							<th><s:property value="total" /></th>
+							<th><a href="#">Borrar</a></th>
+						</tr>
+					</s:iterator>
                 </tbody>
               	</table>
  	</div>
