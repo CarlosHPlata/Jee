@@ -39,6 +39,11 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 	private List<Shoppingcarhistory> shoppingcart;
 	private List<Shoppingcarhistory> buyhistory;
 	
+	
+	public String index() throws Exception{
+		return "index";
+	}
+	
 	public String login() throws Exception{
 		DAOUsuarios daou=new DAOUsuarios();
 		MUser muser=daou.getUser(userName, passWord);

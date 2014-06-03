@@ -24,6 +24,7 @@
 	    	<result name="displayUsersList">/usersList.jsp</result>
 			<result name="displayProductsList">/productsList.jsp</result>
 			<result name="displayConsolesList">/consolesList.jsp</result>
+			<result name="index">/principal.jsp </result>
 		</action>
 
 	</package>
