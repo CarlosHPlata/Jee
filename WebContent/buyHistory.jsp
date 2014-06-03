@@ -28,7 +28,7 @@
                 <tbody>
                 	<s:iterator value="buyhistory">
 						<tr>
-							<th><s:property value="id" /></th>
+							<th><s:property value="id.idcart" /></th>
 							<th><s:property value="product.name" /></th>
 							<th><s:property value="date" /></th>
 							<th><s:property value="quantity" /></th>
