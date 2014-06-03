@@ -8,11 +8,22 @@
 <title>Edita tu Información</title>
 </head>
 <body>
-	<s:form action="updateInfoPersonalMUser">
-		<s:textfield name="name" label="Nombres" value="%{#session['muser'].name}"/>
-		<s:textfield name="lastName" label="Apellidos" value="%{#session['muser'].lastName}"/>
-		<s:textfield name="email" label="Correo Electrónico" value="%{#session['muser'].email}"/>
-		<s:submit value="Actualizar"/>
-	</s:form>
+
+	<%@ include file="includes/header.php" %>
+
+ 	<div class="row" style="padding-top: 10%; margin-bottom: 10%">
+ 	<div class="col-md-3 col-md-offset-4" style="background-color: #555; padding: 5px; border-radius:10px">
+		<s:form action="updateInfoPersonalMUser">
+			<s:textfield name="name" label="Nombres" value="%{#session['muser'].name}"/>
+			<s:textfield name="lastName" label="Apellidos" value="%{#session['muser'].lastName}"/>
+			<s:textfield name="email" label="Correo Electrónico" value="%{#session['muser'].email}"/>
+			<s:submit value="Actualizar"/>
+		</s:form>
+ 	</div>
+ 	</div>
+ 	
+ 	 <!-- /END THE FEATURETTES -->
+      <%@ include file="includes/footer.php" %>
+
 </body>
 </html>

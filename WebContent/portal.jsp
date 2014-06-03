@@ -8,14 +8,33 @@
 <title>Bienvenido</title>
 </head>
 <body>
-	<h1>Bienvenido <s:property value="#session['muser'].name"/> </h1>
-	
-	<p>
-		<a href="editInfoPersonalMUser">Editar tu información personal</a>
-	</p>
-	<p>
-		<a href="editLoginPasswordMUser">Cambiar tu nombre de usuario y contraseña</a>
-	</p>
-	
+
+	<%@ include file="includes/header.php" %>
+
+	<div class="row" style="padding-top: 10%; margin-bottom: 10%">
+		<div class="col-md-3 col-md-offset-4" style="background-color: #555; padding: 5px; border-radius: 10px">
+			<h1>Bienvenido<s:property value="#session['muser'].name" /></h1>
+
+			<p>
+				<a href="editInfoPersonalMUser">Editar tu información personal</a>
+			</p>
+			<p>
+				<a href="editLoginPasswordMUser">Cambiar tu nombre de usuario y contraseña</a>
+			</p>
+			<p>
+				<a href="displayWishListMUser">Ver mi Wishlist</a>
+			</p>
+			<p>
+				<a href="displayShoppingCartMUser">Ver mi Carrito de Compras</a>
+			</p>
+			<p>
+				<a href="displayBuyHistoryMUser">Ver mi Historial de Compras</a>
+			</p>
+		</div>
+	</div>
+
+	<!-- /END THE FEATURETTES -->
+	<%@ include file="includes/footer.php"%>
+
 </body>
 </html>

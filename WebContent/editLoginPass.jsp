@@ -8,11 +8,21 @@
 <title>Edita tu Login</title>
 </head>
 <body>
-	<s:form action="updateUsernamePasswordMUser">
-		<s:textfield name="userName" label="Nombre de usuario" value="%{#session['muser'].userName}"/>
-		<s:password name="passWord" label="Contraseña" value="%{#session['muser'].passWord}" showPassword="true"/>
-		<s:submit value="Actualizar"/>
-	</s:form>
-	
+
+	<%@ include file="includes/header.php" %>
+
+	<div class="row" style="padding-top: 10%; margin-bottom: 10%">
+		<div class="col-md-3 col-md-offset-4" style="background-color: #555; padding: 5px; border-radius: 10px">
+			<s:form action="updateUsernamePasswordMUser">
+				<s:textfield name="userName" label="Nombre de usuario" value="%{#session['muser'].userName}"/>
+				<s:password name="passWord" label="Contraseña" value="%{#session['muser'].passWord}" showPassword="true"/>
+				<s:submit value="Actualizar"/>
+			</s:form>
+		</div>
+	</div>
+
+	<!-- /END THE FEATURETTES -->
+	<%@ include file="includes/footer.php"%>
+
 </body>
 </html>
