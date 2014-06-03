@@ -58,13 +58,19 @@
 			    
 			  </s:if><s:else>
 			  
-			  	<li><a href="#">WishList</a></li>
-			    <li><a href="#">ShoppingCart</a></li>
-			    <li><a href="#">Historial de compras</a></li>
+			  	<li><a href="displayWishListAction">WishList</a></li>
+			    <li><a href="displayShoppingCartAction">ShoppingCart</a></li>
+			    <li><a href="displayBuyHistoryAction">Historial de compras</a></li>
 			    
 			    <li class="divider"></li>
 			    
-			    <li><a href="#">Informacion de perfil</a></li>
+			    <li class="dropdown-submenu">
+			    	<a href="#">Informacion de perfil</a>
+			    	<ul tabindex="-1" class="dropdown-menu">
+			    		<li><a href="editInfoPersonalAction">Editar Informacion basica</a></li>
+			    		<li><a href="editLoginPasswordAction">Editar nombre usuario y contraseña</a></li>
+			    	</ul>
+			    </li>
 			    <li><a href="#">Formas de pago</a></li>
 			    <li><a href="#">Direcciones de envio</a></li>
 			    
