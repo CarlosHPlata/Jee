@@ -11,13 +11,13 @@
 	<h1>Prueba tus listas aquí</h1>
 	
 	<p>
-		<a href="listUsersMAdmin">Lista de Usuarios</a>
+		<a href="listUsersAction">Lista de Usuarios</a>
 	</p>
 	<p>
-		<a href="listProductsMAdmin">Lista de Productos</a>
+		<a href="listProductsAction">Lista de Productos</a>
 	</p>
 	<p>
-		<a href="listConsolesMAdmin">Lista de Consolas</a>
+		<a href="listConsolesAction">Lista de Consolas</a>
 	</p>
 	
 </body>

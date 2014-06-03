@@ -13,10 +13,10 @@
 
 	<div class="row" style="padding-top: 10%; margin-bottom: 10%">
 		<div class="col-md-3 col-md-offset-4" style="background-color: #555; padding: 5px; border-radius: 10px">
-			<s:form action="updateUsernamePasswordMUser">
-				<s:textfield name="userName" label="Nombre de usuario" value="%{#session['muser'].userName}"/>
-				<s:password name="passWord" label="Contraseña" value="%{#session['muser'].passWord}" showPassword="true"/>
-				<s:submit value="Actualizar"/>
+			<s:form cssClass="form-horizontal" action="updateUsernamePasswordAction">
+				<s:textfield cssClass="form-control" name="userName" label="Nombre de usuario" value="%{#session['muser'].userName}"/>
+				<s:password cssClass="form-control" name="passWord" label="Contraseña" value="%{#session['muser'].passWord}" showPassword="true"/>
+				<s:submit cssClass="btn btn-default" value="Actualizar"/>
 			</s:form>
 		</div>
 	</div>

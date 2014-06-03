@@ -12,7 +12,7 @@
 		</action>
 
 
-		<action name="*MUser" class="struct.actions.MUserAction" method="{1}">
+		<action name="*Action" class="struct.actions.MetodosAction" method="{1}">
 			<result name="input">/initSession.jsp</result>
 			<result name="portal">/portal.jsp</result>
 			<result name="editInfo">/editInfoPersonal.jsp</result>
@@ -21,10 +21,7 @@
 	    	<result name="displayWishList">/wishlist.jsp</result>
 	    	<result name="displayShoppingCart">/shoppingCart.jsp</result>
 	    	<result name="displayBuyHistory">/buyHistory.jsp</result>
-		</action>
-		
-		<action name="*MAdmin" class="struct.actions.MAdminAction" method="{1}">
-			<result name="displayUsersList">/usersList.jsp</result>
+	    	<result name="displayUsersList">/usersList.jsp</result>
 			<result name="displayProductsList">/productsList.jsp</result>
 			<result name="displayConsolesList">/consolesList.jsp</result>
 		</action>

@@ -16,19 +16,19 @@
 			<h1>Bienvenido<s:property value="#session['muser'].name" /></h1>
 
 			<p>
-				<a href="editInfoPersonalMUser">Editar tu información personal</a>
+				<a href="editInfoPersonalAction">Editar tu información personal</a>
 			</p>
 			<p>
-				<a href="editLoginPasswordMUser">Cambiar tu nombre de usuario y contraseña</a>
+				<a href="editLoginPasswordAction">Cambiar tu nombre de usuario y contraseña</a>
 			</p>
 			<p>
-				<a href="displayWishListMUser">Ver mi Wishlist</a>
+				<a href="displayWishListAction">Ver mi Wishlist</a>
 			</p>
 			<p>
-				<a href="displayShoppingCartMUser">Ver mi Carrito de Compras</a>
+				<a href="displayShoppingCartAction">Ver mi Carrito de Compras</a>
 			</p>
 			<p>
-				<a href="displayBuyHistoryMUser">Ver mi Historial de Compras</a>
+				<a href="displayBuyHistoryAction">Ver mi Historial de Compras</a>
 			</p>
 		</div>
 	</div>

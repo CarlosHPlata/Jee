@@ -11,15 +11,20 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import dataAccess.DAOs.DAOConsoles;
 import dataAccess.DAOs.DAOProducts;
 import dataAccess.DAOs.DAOShoppingCarAndHistory;
 import dataAccess.DAOs.DAOUsuarios;
 import dataAccess.DAOs.DAOWishList;
+import dataAccess.Entities.Console;
+import dataAccess.Entities.Product;
 import dataAccess.Entities.Shoppingcarhistory;
 import dataAccess.Entities.Wishlist;
 
-public class MUserAction extends ActionSupport implements SessionAware {
-
+public class MetodosAction extends ActionSupport implements SessionAware {
+/*
+ * -------------------------------------------ACTIONS DEL USUARIO------------------------------------------------------------
+ */
 	private Map<String, Object> mapSession;
 	
 	private int id;
@@ -201,6 +206,55 @@ public class MUserAction extends ActionSupport implements SessionAware {
 
 	public void setBuyhistory(List<Shoppingcarhistory> buyhistory) {
 		this.buyhistory = buyhistory;
+	}
+	
+	/*
+	 * -------------------------------------------ACTIONS DEL ADMINISTRADOR------------------------------------------------------------
+	 */
+	private List<MUser> users;
+	private List<Product> products;
+	private List<Console> consoles;
+	
+	public String listUsers() throws Exception{
+		DAOUsuarios daousers = new DAOUsuarios();
+		users = daousers.getAllUsers();
+		return "displayUsersList";
+	}
+	
+	public String listProducts() throws Exception{
+		DAOProducts daoproducts = new DAOProducts();
+		products = daoproducts.getAllProducts();
+		return "displayProductsList";
+	}
+	
+	public String listConsoles() throws Exception{
+		DAOConsoles daoconsoles = new DAOConsoles();
+		setConsoles(daoconsoles.getAllConsoles());
+		return "displayConsolesList";
+	}
+	
+	public List<MUser> getUsers(){
+		return users;
+	}
+	
+	public void setUsers(List<MUser> users){
+		this.users = users;
+	}
+
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+
+	public List<Console> getConsoles() {
+		return consoles;
+	}
+
+	public void setConsoles(List<Console> consoles) {
+		this.consoles = consoles;
 	}
 	
 }
