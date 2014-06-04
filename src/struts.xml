@@ -13,7 +13,7 @@
 
 
 		<action name="*Action" class="struct.actions.MetodosAction" method="{1}">
-			<result name="input">/initSession.jsp</result>
+			<result name="input">/InitSession.jsp</result>
 			<result name="portal">/portal.jsp</result>
 			<result name="editInfo">/editInfoPersonal.jsp</result>
 	    	<result name="editLoginPass">/editLoginPass.jsp</result>
@@ -29,6 +29,8 @@
 			<result name="editProduct">/editInfoProduct.jsp </result>
 			<result name="editClient">/editInfoUser.jsp </result>
 			<result name="registry_successful">/successfulRegistry.jsp</result>
+			<result name="catalog">/Catalog.jsp </result>
+			<result name="productdetail">/productDetail.jsp</result>
 		</action>
 
 	</package>

@@ -1,22 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/carousel.css" rel="stylesheet">
-<link rel="stylesheet" href="css/bootstrap-social.css">
-<link rel="stylesheet" href="css/font-awesome.css">
-<title>Juegos JEE|Bienvenido</title>
+<title>Insert title here</title>
 </head>
 <body>
-
-	
 <!-- NAVBAR -->
 
 
@@ -64,17 +54,23 @@
 			  
 			  <s:if test="%{#session['muser']==null}">
 			  
-			    <li><a href="InitSession.jsp">Iniciar sesion</a></li>
+			    <li><a href="initAction">Iniciar sesion</a></li>
 			    
 			  </s:if><s:else>
 			  
-			  	<li><a href="#">WishList</a></li>
-			    <li><a href="#">ShoppingCart</a></li>
-			    <li><a href="#">Historial de compras</a></li>
+			  	<li><a href="displayWishListAction">WishList</a></li>
+			    <li><a href="displayShoppingCartAction">ShoppingCart</a></li>
+			    <li><a href="displayBuyHistoryAction">Historial de compras</a></li>
 			    
 			    <li class="divider"></li>
 			    
-			    <li><a href="#">Informacion de perfil</a></li>
+			    <li class="dropdown-submenu">
+			    	<a href="#">Informacion de perfil</a>
+			    	<ul tabindex="-1" class="dropdown-menu">
+			    		<li><a href="editInfoPersonalAction">Editar Informacion basica</a></li>
+			    		<li><a href="editLoginPasswordAction">Editar nombre usuario y contraseña</a></li>
+			    	</ul>
+			    </li>
 			    <li><a href="#">Formas de pago</a></li>
 			    <li><a href="#">Direcciones de envio</a></li>
 			    
@@ -83,11 +79,11 @@
 				    <li class="dropdown-submenu">
 				        <a href="#">Editar catalogo</a>
 				        <ul tabindex="-1" class="dropdown-menu">
-				          <li><a href="#" title="Iformacion productos">Productos</a></li>
-				          <li><a href="#" title="Informacion consolas">Consolas</a></li>
+				          <li><a href="listProductsAction" title="Iformacion productos">Productos</a></li>
+				          <li><a href="listConsolesAction" title="Informacion consolas">Consolas</a></li>
 				        </ul>
 				    </li>
-				    <li><a href="#">Informacion de usuarios</a></li>
+				    <li><a href="listUsersAction">Listar usuarios</a></li>
 			    </s:if>
 			  
 			  	<li class="divider"></li>
@@ -120,35 +116,5 @@
 
 
 <!-- Fin NAVBAR -->
-
-
-
-
-
-	<div class="row" style="padding-top: 10%; margin-bottom: 10%">
-		<div class="col-md-3 col-md-offset-4" style="background-color: #555; padding: 5px; border-radius: 10px">
-			<h1>Bienvenido<s:property value="#session['muser'].name" /></h1>
-
-			<p>
-				<a href="editInfoPersonalAction">Editar tu información personal</a>
-			</p>
-			<p>
-				<a href="editLoginPasswordAction">Cambiar tu nombre de usuario y contraseña</a>
-			</p>
-			<p>
-				<a href="displayWishListAction">Ver mi Wishlist</a>
-			</p>
-			<p>
-				<a href="displayShoppingCartAction">Ver mi Carrito de Compras</a>
-			</p>
-			<p>
-				<a href="displayBuyHistoryAction">Ver mi Historial de Compras</a>
-			</p>
-		</div>
-	</div>
-
-	<!-- /END THE FEATURETTES -->
-	<%@ include file="includes/footer.php"%>
-
 </body>
 </html>
