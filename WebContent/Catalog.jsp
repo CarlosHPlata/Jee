@@ -16,6 +16,7 @@
 <link href="css/carousel.css" rel="stylesheet">
 <link rel="stylesheet" href="css/bootstrap-social.css">
 <link rel="stylesheet" href="css/font-awesome.css">
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
 </head>
 <body>
 <%@ include file="includes/header.jsp" %>

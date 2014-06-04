@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
 <title>Juegos JEE|Inicia sesion</title>
 
 <link href="css/bootstrap.css" rel="stylesheet">

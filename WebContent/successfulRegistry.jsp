@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="css/bootstrap-social.css">
 <link rel="stylesheet" href="css/font-awesome.css">
 <META HTTP-EQUIV="Refresh" CONTENT="3;URL=indexAction.action">
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
 <title>Editar Cliente</title>
 </head>
 <body>

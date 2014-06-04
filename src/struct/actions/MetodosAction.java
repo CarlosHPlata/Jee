@@ -303,9 +303,9 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 	}
 	
 	public String registerProduct() throws Exception{
-		MAdmin madmin = (MAdmin)ActionContext.getContext().getSession().get("muser");
+		MAdmin madmin = new MAdmin(null, null, null, null, null, new Date());
 		madmin.createProduct(getName(), getDesc(), getPrize(), getQuantity(), getImage(), null);
-		return "registry_successful";
+		return listProducts();
 	}
 	
 	public String editInfoProduct() throws Exception{

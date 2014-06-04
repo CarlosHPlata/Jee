@@ -12,6 +12,7 @@
 <link href="css/carousel.css" rel="stylesheet">
 <link rel="stylesheet" href="css/bootstrap-social.css">
 <link rel="stylesheet" href="css/font-awesome.css">
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
 <title>Juegos JEE|Carrito de Compras</title>
 </head>
 <body>
@@ -49,7 +50,7 @@
 								</s:form>	
 								<s:form action="idontwanttobuyitAction">
 									<s:hidden value="%{product.idProduct}" name="idPrd"/>
-									<s:textfield value="%{id.idcart}" name="idCrt"/>
+									<s:hidden value="%{id.idcart}" name="idCrt"/>
 									<s:submit value="Quitar del carrito" cssClass="btn btn-dange" />
 								</s:form>	
 							</th>
@@ -57,8 +58,10 @@
 					</s:iterator>
                 </tbody>
           </table>
+          <!--  
           <div class="col-md-11"></div>
           <div class="col-md-1"><button type="button" class="btn btn-success">Success</button></div>
+          -->
  	</div>
  	</div>
  	

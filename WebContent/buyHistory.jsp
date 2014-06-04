@@ -8,6 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
 <title>Juegos JEE|Historial de Compras</title>
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/carousel.css" rel="stylesheet">
@@ -29,7 +30,6 @@
                     <th>Cantidad</th>
                     <th>Precio Unitario</th>
                     <th>Total</th>
-                    <th>Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -41,7 +41,6 @@
 							<th><s:property value="quantity" /></th>
 							<th><s:property value="product.prize" /></th>
 							<th><s:property value="total" /></th>
-							<th><a href="#">Borrar</a></th>
 						</tr>
 					</s:iterator>
                 </tbody>
