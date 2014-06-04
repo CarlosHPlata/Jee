@@ -25,16 +25,18 @@ public class DAOShoppingCarAndHistory extends DAO{
 		return getAll(Shoppingcarhistory.class);
 	}
 	
-	public void create(Shoppingcarhistory registry){
+	public void createRegistry(Shoppingcarhistory registry){
 		create(registry);
 	}
 	
-	public void update(Shoppingcarhistory registry){
-		create(registry);
+	public void updateRegistry(Shoppingcarhistory registry){
+		update(registry);
 	}
 	
-	public void delete(Shoppingcarhistory registry){
-		Shoppingcarhistory deleted=getRegistryById(registry.getId().getIdcart(), (new DAOUsuarios()).getMUserFromEntitie(registry.getUser()), registry.getProduct());
+	public void deleteRegistry(Shoppingcarhistory registry){
+		MUser user=(new DAOUsuarios()).getUserById(registry.getId().getUserIdUser(), registry.getId().isUserType());
+		Product product=(new DAOProducts()).getProduct(registry.getId().getProductIdProduct());
+		Shoppingcarhistory deleted=getRegistryById(registry.getId().getIdcart(),user, product);
 		delete(deleted);
 	}
 	

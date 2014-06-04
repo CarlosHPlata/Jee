@@ -20,32 +20,56 @@
 
  	<div class="row" style="padding-top: 10%; margin-bottom: 10%">
  	<div class="col-md-10 col-md-offset-1" style="background-color: #555; padding: 5px; border-radius:10px">
- 		<h1 style="padding-left: 10px">HALO 5</h1>
+ 		<h1 style="padding-left: 10px"><s:property value="product.name"/></h1>
  		<div class="row">
  		<div class="col-md-4">
- 			<img style="width: 100%; height: 100%" src="img/halo5.jpg" class="img-rounded">
+ 			<img style="width: 100%; height: 100%" src="img/<s:property value="product.image"/>" class="img-rounded">
  		</div>
  		
 		<div class="col-md-8">
-	 		<p class="lead" >Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an. 
-	 		Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id. Quo mundi lobortis reformidans eu, legimus senserit 
-	 		definiebas an eos. Eu sit tincidunt incorrupte definitionem, vis mutat affert percipit cu, eirmod consectetuer signiferumque 
-	 		eu per. In usu latine equidem dolores. Quo no falli viris intellegam, ut fugit veritus placerat per.</p>
+	 		<p class="lead" > <s:property value="product.desc" /> </p>
 	 		
  		</div>
  		</div>
  		<div class="row">
  			<div class="col-md-4">
-	 			<img style="width: 30px; height: 30px" src="img/star.png">
-	 			<img style="width: 30px; height: 30px" src="img/star.png">
-	 			<img style="width: 30px; height: 30px" src="img/star.png">
-	 			<img style="width: 30px; height: 30px" src="img/star.png">
-	 			<img style="width: 30px; height: 30px" src="img/star.png">
+ 				<s:iterator status="status1" begin="1" end="%{product.stars}">
+ 					<s:if test="%{#session['muser']!=null}">
+ 					<a href="rateGameAction?rate=<s:property value="%{#status1.count}"/>&prod=<s:property value="product.idProduct"/>" >
+ 					</s:if>
+ 					<img style="width: 30px; height: 30px" src="img/star.png">
+ 					<s:if test="%{#session['muser']!=null}">
+ 					</a>
+ 					</s:if>
+ 				</s:iterator>
+ 				<s:iterator status="status2" begin="%{product.stars}" end="4">
+ 					<s:if test="%{#session['muser']!=null}">
+ 					<a href="rateGameAction?rate=<s:property value="%{#status2.count + product.stars}"/>&prod=<s:property value="product.idProduct"/>" >
+ 					</s:if>
+ 					<img style="width: 30px; height: 30px" src="img/staroff.png">
+ 					<s:if test="%{#session['muser']!=null}">
+ 					</a>
+ 					</s:if>
+ 				</s:iterator>
 	 		</div>
 	 		<div class="col-md-8">
-		 		<label style="color: red; font-weight: bolder;">$Infinito + 1</label>
-		 		<button type="button" class="btn btn-primary">Carreto</button>
-				<button type="button" class="btn btn-success">Comprar ya</button>
+	 			<s:if test="%{#session['muser']!=null}">
+	 				<s:if test="%{#session['muser'].type==false}">
+				 		<label style="color: red; font-weight: bolder;"><s:property value="product.prize"/></label>
+				 		<s:form action="addProductWishListAction">
+				 			<s:hidden name="idPrd" value="%{product.idProduct}"/>
+				 			<s:submit cssClass="btn btn-info" value="Aparta tu copia"></s:submit>
+				 		</s:form>
+				 		<s:form action="addProductToCartAction">
+				 			<s:hidden name="idPrd" value="%{product.idProduct}"/>
+				 			<s:submit cssClass="btn btn-warning" value="Añade al carrito"></s:submit>
+				 		</s:form>
+				 		<s:form action="buyProductNowAction">
+				 			<s:hidden name="idPrd" value="%{product.idProduct}"/>
+				 			<s:submit cssClass="btn btn-success" value="Compra ya"></s:submit>
+				 		</s:form>
+			 		</s:if>
+				</s:if>
 	 		</div>
  		</div>
  	</div>

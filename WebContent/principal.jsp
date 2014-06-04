@@ -45,7 +45,6 @@
           <img src="img/Slider.png" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
-                            <p><a href="" class="btn btn-primary" title="">Apartar &raquo;</a></p>
             </div>
           </div>
         </div>
@@ -53,7 +52,6 @@
           <img src="img/Slider3.png" alt="Third slide">
           <div class="container">
             <div class="carousel-caption">
-                            <p><a href="" class="btn btn-primary" title="">Apartar &raquo;</a></p>
             </div>
           </div>
         </div>
@@ -79,7 +77,7 @@
 	          <p class="text" style="overflow:hidden; text-overflow: ellipsis; -webkit-line-clamp: 11;"><s:property value="desc"/></p>
 	          <p class="tags">
 	          </p>
-	          <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+	          <p><a class="btn btn-primary" href="detailProductAction?idProduct=<s:property value="idProduct"/>" role="button">View details &raquo;</a></p>
 	        </div><!-- /.col-lg-3 -->
 		</s:iterator>
 		

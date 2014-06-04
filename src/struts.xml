@@ -26,6 +26,7 @@
 			<result name="displayConsolesList">/consolesList.jsp</result>
 			<result name="index">/principal.jsp </result>
 			<result name="catalog">/Catalog.jsp </result>
+			<result name="productdetail">/productDetail.jsp</result>
 		</action>
 
 	</package>
