@@ -79,11 +79,11 @@
 				    <li class="dropdown-submenu">
 				        <a href="#">Editar catalogo</a>
 				        <ul tabindex="-1" class="dropdown-menu">
-				          <li><a href="#" title="Iformacion productos">Productos</a></li>
-				          <li><a href="#" title="Informacion consolas">Consolas</a></li>
+				          <li><a href="listProductsAction" title="Iformacion productos">Productos</a></li>
+				          <li><a href="listConsolesAction" title="Informacion consolas">Consolas</a></li>
 				        </ul>
 				    </li>
-				    <li><a href="#">Informacion de usuarios</a></li>
+				    <li><a href="listUsersAction">Listar usuarios</a></li>
 			    </s:if>
 			  
 			  	<li class="divider"></li>
