@@ -26,8 +26,10 @@
 					<s:iterator value="consoles">
 						<tr>
 							<th><s:property value="idConsole" /></th>
-							<th><a href="#"><s:property value="company" /></a></th>
-							<th><a href="#">Editar Borrar</a></th>
+							<th><a href="editInfoConsoleAction?idConsole=<s:property value="idConsole" />"><s:property value="company" /></a></th>
+							<th>
+								<a href="editInfoConsoleAction?idConsole=<s:property value="idConsole" />">Editar </a>
+							</th>
 						</tr>
 					</s:iterator>
 				</tbody>

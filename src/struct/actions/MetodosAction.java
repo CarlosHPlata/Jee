@@ -228,6 +228,7 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 	private Console console;
 	private int idProduct;
 	private int idUser;
+	private int idConsole;
 	private String desc;
 	private float prize;
 	private int quantity;
@@ -294,7 +295,7 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 	
 	public String registerProduct() throws Exception{
 		MAdmin madmin = (MAdmin)ActionContext.getContext().getSession().get("muser");
-		madmin.createProduct(getName(), getDesc(), getPrize(), getQuantity(), getImage(), getConsoles());
+		madmin.createProduct(getName(), getDesc(), getPrize(), getQuantity(), getImage(), null);
 		return "registry_successful";
 	}
 	
@@ -339,6 +340,25 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 		this.console = new Console(daoc.getAllConsoles().size()+1, getName());
 		daoc.createConsole(this.console);
 		return "registry_successful";
+	}
+	
+	public String editInfoConsole() throws Exception{
+		String[] temp = (String[])ActionContext.getContext().getParameters().get("idConsole");
+		String idConsole = "";
+		for (int i = 0; i < temp.length; i++) {
+			idConsole += temp[i];
+		}
+		DAOConsoles daoc = new DAOConsoles();
+		this.console = daoc.getConsole(Integer.parseInt(idConsole));
+		return "editConsole";
+	}
+	
+	public String updateInfoConsole() throws Exception{
+		DAOConsoles daoc = new DAOConsoles();
+		this.console = daoc.getConsole(getIdConsole());
+		this.console.setCompany(getName());
+		daoc.updateConsole(this.console);
+		return "success";
 	}
 	
 	public List<MUser> getUsers(){
@@ -403,6 +423,14 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 
 	public void setIdUser(int idUser) {
 		this.idUser = idUser;
+	}
+
+	public int getIdConsole() {
+		return idConsole;
+	}
+
+	public void setIdConsole(int idConsole) {
+		this.idConsole = idConsole;
 	}
 
 	public String getDesc() {

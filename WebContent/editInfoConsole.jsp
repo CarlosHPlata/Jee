@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Registro Producto</title>
+<title>Editar Consola</title>
 </head>
 <body>
 
@@ -13,15 +13,10 @@
 
  	<div class="row" style="padding-top: 10%; margin-bottom: 10%">
  	<div class="col-md-3 col-md-offset-4" style="background-color: #555; padding: 5px; border-radius:10px">
- 		<h3>Bienvenido. Por favor, llene el formulario para registrar el producto</h3>
- 		<s:form action="registerProductAction">
-			<s:textfield cssClass="form-control" name="name" label="Nombre"/>
-			<s:textarea cssClass="form-control" name="desc" label="Descripción"/>
-			<s:textfield cssClass="form-control" name="prize" label="Precio"/>
-			<s:textfield cssClass="form-control" name="quantity" label="Cantidad"/>
-			<s:textfield cssClass="form-control" name="image" label="Imagen"/>
-			<s:checkboxlist  name="consoles" label="Consola" list="consoles" listValue="company" />
-			<s:submit cssClass="btn btn-default" value="Registrar"/>
+ 		<s:form action="updateInfoConsoleAction">
+			<s:hidden name="idConsole" value="%{console.idConsole}"/>
+			<s:textfield cssClass="form-control" name="name" label="Nombre" value="%{console.company}"/>
+			<s:submit cssClass="btn btn-default" value="Actualizar"/>
 		</s:form>
  	</div>
  	</div>
