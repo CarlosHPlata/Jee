@@ -19,11 +19,7 @@ public class Prueba {
 
 	public static void main(String[] args) {
 		
-		Product product=new Product(((new DAOProducts()).getAllProducts().size()+1), "halo 3", "lol", 666, 0, 10000, new Date(), "megamanx5.jpg");
 		
-		(new DAOProducts()).createProduct(product);
-		
-		System.out.println("lol");
 	}
 
 }

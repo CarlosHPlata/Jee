@@ -18,11 +18,15 @@
 <%@ include file="includes/header.jsp" %>
 
  	<div class="row" style="padding-top: 10%; margin-bottom: 10%">
- 	<div class="col-md-10 col-md-offset-1" style="background-color: #555; padding: 5px; border-radius:10px">
- 		<s:form  cssClass="form-horizontal" action="updateInfoProductAction">
-			<s:textfield name="name" label="Nombres" value="%{#session['muser'].name}"/>
-			<s:textfield name="lastName" label="Apellidos" value="%{#session['muser'].lastName}"/>
-			<s:textfield name="email" label="Correo Electrónico" value="%{#session['muser'].email}"/>
+ 	<div class="col-md-3 col-md-offset-4" style="background-color: #555; padding: 5px; border-radius:10px">
+ 		<s:form action="updateInfoProductAction">
+			<s:hidden name="idProduct" value="%{product.idProduct}"/>
+			<s:textfield cssClass="form-control" name="name" label="Nombre" value="%{product.name}"/>
+			<s:textarea cssClass="form-control" name="desc" label="Descripción" value="%{product.desc}"/>
+			<s:textfield cssClass="form-control" name="prize" label="Precio" value="%{product.prize}"/>
+			<s:textfield cssClass="form-control" name="quantity" label="Cantidad" value="%{product.quantity}"/>
+			<s:textfield cssClass="form-control" name="creationDate" label="Fecha de Creación" value="%{product.creationDate}"/>
+			<s:textfield cssClass="form-control" name="image" label="Imagen" value="%{product.image}"/>
 			<s:submit cssClass="btn btn-default" value="Actualizar"/>
 		</s:form>
  	</div>

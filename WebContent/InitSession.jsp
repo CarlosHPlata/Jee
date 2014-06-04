@@ -33,6 +33,7 @@
 			<s:password cssClass="form-control" name="passWord" label="Contraseña"/>
 			<s:submit value="Entrar" cssClass="btn btn-default"/>
 		</s:form>
+		<a href="./registroCliente.jsp">Regístrate Aquí</a>
 		
  	</div>
  	</div>
