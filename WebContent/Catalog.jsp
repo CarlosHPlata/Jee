@@ -35,7 +35,6 @@
 	          <p class="p-buttons">
 	          
 	          <s:if test="%{#session['muser']!=null}">
-	          <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span></a>
 	          </s:if>
 	            <a class="btn btn-primary" href="detailProductAction?idProduct=<s:property value="idProduct"/>" role="button">Ver más &raquo;</a>
 	          </p>

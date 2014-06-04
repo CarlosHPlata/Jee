@@ -43,6 +43,7 @@
 							<th>
 								<a href="editInfoProductAction?idProduct=<s:property value="idProduct" />">Editar </a>
 								<a href="deleteProductAction?idProduct=<s:property value="idProduct" />">Borrar</a>
+								<a href="estadisticsAction?idProduct=<s:property value="idProduct" />">Obtener estadisticas</a>
 							</th>
 						</tr>
 					</s:iterator>
