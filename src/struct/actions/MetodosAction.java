@@ -233,7 +233,7 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 	 * -------------------------------------------ACTIONS DEL ADMINISTRADOR------------------------------------------------------------
 	 */
 	private List<MUser> users;
-	private List<Product> products;
+	private List<Product> products=(new DAOProducts()).getAllProducts();
 	private List<Console> consoles=(new DAOConsoles()).getAllConsoles();
 	
 	public String listUsers() throws Exception{

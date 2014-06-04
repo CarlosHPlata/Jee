@@ -28,16 +28,15 @@
       		<div class="col-lg-3 col-sm-12" style="border: 1px solid #555">
 	          <img class="img-rounded" src="img/<s:property value="image"/>" alt="Generic placeholder image" width="200" height="200">
 	          <h2><s:property value="name"/></h2>
-	          <p class="text"><s:property value="desc"/></p>
+	          <p class="text" style="overflow:hidden;text-overflow: ellipsis; -webkit-line-clamp: 11;"><s:property value="desc"/></p>
 	          <p class="tags">
-	            <a href="juegos.php"><span class="label label-success">Xbox360</span></a>
+	          	
 	          </p>
 	          <p class="p-buttons">
 	          
 	          <s:if test="%{#session['muser']!=null}">
 	          <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span></a>
 	          </s:if>
-	          
 	            <a class="btn btn-primary" href="#" role="button">Ver más &raquo;</a>
 	          </p>
 	        </div><!-- /.col-lg-3 -->

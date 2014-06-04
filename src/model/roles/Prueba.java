@@ -1,5 +1,6 @@
 package model.roles;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -16,12 +17,19 @@ public class Prueba {
 
 	public static void main(String[] args) {
 		
-		DAOProducts prd= new DAOProducts();
+		DAOProducts daocns=new DAOProducts();
+		ArrayList<Console> console=new ArrayList<Console>();
 		
-		List<Product> prds=prd.getAllProducts();
+		Product product=daocns.getProduct(2);
 		
-		for(int i=0; i<prds.size(); i++){
-			System.out.println(prds.get(i).getImage());
+		Iterator<Console> cons=product.getConsoles().iterator();
+		
+		while(cons.hasNext()){
+			console.add(cons.next());
+		}
+		
+		for(int i=0; i<console.size(); i++){
+			System.out.println(console.get(i).getCompany());
 		}
 		
 	}
