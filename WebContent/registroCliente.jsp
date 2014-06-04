@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Inicia sesion</title>
+<title>Editar Cliente</title>
 </head>
 <body>
 
@@ -13,18 +13,16 @@
 
  	<div class="row" style="padding-top: 10%; margin-bottom: 10%">
  	<div class="col-md-3 col-md-offset-4" style="background-color: #555; padding: 5px; border-radius:10px">
- 		<s:head/>
-	
-		<s:actionerror/>
-		
-		
-		<s:form action="loginAction">
-			<s:textfield cssClass="form-control" name="userName" label="Nombre de usuario"/>
-			<s:password cssClass="form-control" name="passWord" label="Contraseña"/>
-			<s:submit value="Entrar" cssClass="btn btn-default"/>
+ 		<h3>Bienvenido. Por favor, llene el formulario para registrarse</h3>
+ 		<s:form action="registerClientAction">
+			<s:textfield cssClass="form-control" name="userName" label="Nombre de Usuario"/>
+			<s:textfield cssClass="form-control" name="passWord" label="Contraseña"/>
+			<s:textfield cssClass="form-control" name="name" label="Nombres"/>
+			<s:textfield cssClass="form-control" name="lastName" label="Apellidos"/>
+			<s:textfield cssClass="form-control" name="email" label="Correo Electrónico"/>
+			<s:textfield cssClass="form-control" name="birthDate" label="Fecha de Nacimiento"/>
+			<s:submit cssClass="btn btn-default" value="Registrar"/>
 		</s:form>
-		<a href="./registroCliente.jsp">Regístrate Aquí</a>
-		
  	</div>
  	</div>
  	

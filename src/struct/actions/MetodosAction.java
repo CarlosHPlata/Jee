@@ -223,9 +223,9 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 	private List<Product> products;
 	private List<Console> consoles;
 	private Product product;
-	private MUser mclient;
+	private MUser muser;
 	private int idProduct;
-	private int idClient;
+	private int idUser;
 	private String desc;
 	private float prize;
 	private int quantity;
@@ -257,18 +257,18 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 			idUser += temp[i];
 		}
 		DAOUsuarios daousers = new DAOUsuarios();
-		this.mclient = daousers.getUserById(Integer.parseInt(idUser), false);
+		this.muser = daousers.getUserById(Integer.parseInt(idUser), false);
 		return "editClient";
 	}
 	
 	public String updateInfoUser() throws Exception{
 		DAOUsuarios dau = new DAOUsuarios();
-		this.mclient = dau.getUserById(getIdClient(), false);
-		this.mclient.setName(getName());
-		this.mclient.setLastName(getLastName());
-		this.mclient.setEmail(getEmail());
-		this.mclient.setBirthDate(getBirthDate());
-		dau.updateUser(this.mclient);
+		this.muser = dau.getUserById(getIdUser(), false);
+		this.muser.setName(getName());
+		this.muser.setLastName(getLastName());
+		this.muser.setEmail(getEmail());
+		this.muser.setBirthDate(getBirthDate());
+		dau.updateUser(this.muser);
 		return "success";
 	}
 	
@@ -279,8 +279,8 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 			idUser += temp[i];
 		}
 		DAOUsuarios daousers = new DAOUsuarios();
-		this.mclient = daousers.getUserById(Integer.parseInt(idUser), false);
-		daousers.deleteUser(this.mclient);
+		this.muser = daousers.getUserById(Integer.parseInt(idUser), false);
+		daousers.deleteUser(this.muser);
 		return "success";
 	}
 	
@@ -352,12 +352,12 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 		this.product = product;
 	}
 
-	public MUser getMclient() {
-		return mclient;
+	public MUser getMuser() {
+		return muser;
 	}
 
-	public void setMclient(MUser mclient) {
-		this.mclient = mclient;
+	public void setMuser(MUser muser) {
+		this.muser = muser;
 	}
 
 	public int getIdProduct() {
@@ -368,12 +368,12 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 		this.idProduct = idProduct;
 	}
 
-	public int getIdClient() {
-		return idClient;
+	public int getIdUser() {
+		return idUser;
 	}
 
-	public void setIdClient(int idClient) {
-		this.idClient = idClient;
+	public void setIdUser(int idUser) {
+		this.idUser = idUser;
 	}
 
 	public String getDesc() {
@@ -416,6 +416,26 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 		this.image = image;
 	}
 	
+	/*
+	 * -------------------------------------------ACTIONS DEL ADMINISTRADOR------------------------------------------------------------
+	 */
 	
+
+	private MClient mclient;
+	
+	public String registerClient(){
+		this.mclient = new MClient(getUserName(), getPassWord(), getName(), getLastName(), getEmail(), new Date());
+		DAOUsuarios daou = new DAOUsuarios();
+		daou.createUser(this.mclient);
+		return "registry_successful";
+	}
+	
+	public MClient getMclient() {
+		return mclient;
+	}
+
+	public void setMclient(MClient mclient) {
+		this.mclient = mclient;
+	}
 	
 }

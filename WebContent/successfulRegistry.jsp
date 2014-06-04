@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Inicia sesion</title>
+<title>Editar Cliente</title>
 </head>
 <body>
 
@@ -13,18 +13,7 @@
 
  	<div class="row" style="padding-top: 10%; margin-bottom: 10%">
  	<div class="col-md-3 col-md-offset-4" style="background-color: #555; padding: 5px; border-radius:10px">
- 		<s:head/>
-	
-		<s:actionerror/>
-		
-		
-		<s:form action="loginAction">
-			<s:textfield cssClass="form-control" name="userName" label="Nombre de usuario"/>
-			<s:password cssClass="form-control" name="passWord" label="Contraseña"/>
-			<s:submit value="Entrar" cssClass="btn btn-default"/>
-		</s:form>
-		<a href="./registroCliente.jsp">Regístrate Aquí</a>
-		
+ 		<s:text name="gracias"></s:text>
  	</div>
  	</div>
  	
