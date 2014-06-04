@@ -1,14 +1,20 @@
 package struct.actions;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
+
+import model.roles.MClient;
 import model.roles.MUser;
 
+import org.apache.catalina.connector.Request;
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import dataAccess.DAOs.DAOConsoles;
@@ -38,10 +44,25 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 	private List<Wishlist> wishlist;
 	private List<Shoppingcarhistory> shoppingcart;
 	private List<Shoppingcarhistory> buyhistory;
+	private Product product;
 	
 	
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
 	public String index() throws Exception{
+		this.consoles=(new DAOConsoles()).getAllConsoles();
+		this.products=(new DAOProducts()).getAllProducts();
 		return "index";
+	}
+	
+	public String init() throws Exception{
+		return INPUT;
 	}
 	
 	public String login() throws Exception{
@@ -50,11 +71,17 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 		
 		if(muser!=null){
 			mapSession.put("muser", muser);
-			return "portal";
+			return "index";
 		}else{
 			addActionError("invalido el usuario");
 			return INPUT;
 		}
+	}
+	
+	public String logout() throws Exception{
+		Map session = ActionContext.getContext().getSession();
+		session.remove("muser");
+		return "index";
 	}
 	
 	public String editInfoPersonal() throws Exception {
@@ -217,8 +244,8 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 	 * -------------------------------------------ACTIONS DEL ADMINISTRADOR------------------------------------------------------------
 	 */
 	private List<MUser> users;
-	private List<Product> products;
-	private List<Console> consoles;
+	private List<Product> products=(new DAOProducts()).getAllProducts();
+	private List<Console> consoles=(new DAOConsoles()).getAllConsoles();
 	
 	public String listUsers() throws Exception{
 		DAOUsuarios daousers = new DAOUsuarios();
@@ -260,6 +287,196 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 
 	public void setConsoles(List<Console> consoles) {
 		this.consoles = consoles;
+	}
+	
+	
+	//ACCIONES DEL CATALOGO	
+	
+	public String catalog() throws Exception{
+		this.products=(new DAOProducts()).getAllProducts();
+		return "catalog";
+	}
+	
+	public String catalogByConsole() throws Exception{
+		String[] temp=(String[]) ActionContext.getContext().getParameters().get("idConsole");
+		String idConsole="";
+		for(int i=0; i<temp.length;i++){
+			idConsole+=temp[i];
+		}
+		
+		Console console=(new DAOConsoles()).getConsole(Integer.valueOf(idConsole));
+		
+		DAOProducts daoprod=new DAOProducts();
+		
+		this.products=daoprod.getCatalogByConsole(console);
+		return "catalog";
+	}
+	
+	public String detailProduct() throws Exception{
+		String[] temp=(String[]) ActionContext.getContext().getParameters().get("idProduct");
+		String idProduct="";
+		for(int i=0; i<temp.length;i++){
+			idProduct+=temp[i];
+		}
+		
+		DAOProducts prd=new DAOProducts();
+		
+		this.product=prd.getProduct(Integer.valueOf(idProduct));
+		
+		return "productdetail";
+	}
+	
+	
+	//Acciones de compra  de products
+
+	private int idPrd;
+	private int idCrt;
+	
+	public int getIdCrt() {
+		return idCrt;
+	}
+
+	public void setIdCrt(int idCrt) {
+		this.idCrt = idCrt;
+	}
+
+	public int getIdPrd() {
+		return idPrd;
+	}
+
+	public void setIdPrd(int idPrd) {
+		this.idPrd = idPrd;
+	}
+
+	public String buyProductNow() throws Exception{
+		
+		MClient client=(MClient)ActionContext.getContext().getSession().get("muser");
+		
+		DAOProducts daoprd=new DAOProducts();
+		Product product=daoprd.getProduct(this.idPrd);
+		
+		client.buyAProduct(product, 1);
+		
+		return displayBuyHistory();
+	}
+	
+	public String addProductToCart() throws Exception{
+		MClient client=(MClient)ActionContext.getContext().getSession().get("muser");
+		
+		Product product=(new DAOProducts()).getProduct(this.idPrd);
+		
+		client.setAProductInShoppingCar(product, 1);
+		
+		return displayShoppingCart();
+	}
+	
+	public String addProductWishList() throws Exception{
+		MClient client=(MClient)ActionContext.getContext().getSession().get("muser");
+		
+		Product product=(new DAOProducts()).getProduct(this.idPrd);
+		
+		client.setProductInWishList(product, 1);
+		
+		return displayWishList();
+	}
+	
+	public String wishlistToCart() throws Exception{
+		MClient client=(MClient)ActionContext.getContext().getSession().get("muser");
+		
+		Product product=(new DAOProducts()).getProduct(this.idPrd);
+		
+		Wishlist wish=(new DAOWishList()).getWishListById(client, product);
+		
+		client.WishListToShoppingCar(wish);
+		
+		return displayShoppingCart();
+	}
+	
+	public String buyAproductInCart() throws Exception{
+		MClient client=(MClient)ActionContext.getContext().getSession().get("muser");
+		Shoppingcarhistory reg=(new DAOShoppingCarAndHistory()).getRegistryById(this.idCrt, client, (new DAOProducts()).getProduct(this.idPrd));
+		
+		client.buyAProductInShoppingCar(reg);
+		
+		return displayBuyHistory();		
+	}
+	
+	public String buyAllProductsInCart() throws Exception{
+		MClient client=(MClient)ActionContext.getContext().getSession().get("muser");
+		
+		List<Shoppingcarhistory> cart=(new DAOShoppingCarAndHistory()).getShoppingCar(client);
+		
+		for(int i=0; i<cart.size();i++){
+			client.buyAProductInShoppingCar(cart.get(i));
+		}	
+		
+		return displayBuyHistory();
+	}
+	
+	public String quitWish() throws Exception{
+		MClient client=(MClient)ActionContext.getContext().getSession().get("muser");
+		
+		Product product=(new DAOProducts()).getProduct(this.idPrd);
+		
+		Wishlist wish=(new DAOWishList()).getWishListById(client, product);
+		
+		client.deleteRegistrytInWishList(wish);
+		
+		return displayWishList();
+	}
+	
+	public String idontwanttobuyit() throws Exception{
+		MClient client=(MClient)ActionContext.getContext().getSession().get("muser");
+		
+		Product product=(new DAOProducts()).getProduct(this.idPrd);
+		
+		Shoppingcarhistory reg=(new DAOShoppingCarAndHistory()).getRegistryById(this.idCrt, client, product);
+		
+		client.deleteRegistryFromShoppingCar(reg);
+		
+		return displayShoppingCart();
+	}
+	
+	//Calificando juego
+	
+	
+	private int starscal;
+
+
+	public int getStarscal() {
+		return starscal;
+	}
+
+	public void setStarscal(int starscal) {
+		this.starscal = starscal;
+	}
+	
+	public String rateGame() throws Exception{
+		String[] temp=(String[]) ActionContext.getContext().getParameters().get("prod");
+		String idProduct="";
+		for(int i=0; i<temp.length;i++){
+			idProduct+=temp[i];
+		}
+		
+		DAOProducts prd=new DAOProducts();
+		
+		this.product=prd.getProduct(Integer.valueOf(idProduct));
+		
+		String[] temp2=(String[])ActionContext.getContext().getParameters().get("rate");
+		String rate="";
+		for(int i=0; i<temp2.length;i++){
+			rate+=temp2[i];
+		}
+		int realrate=Integer.valueOf(rate);
+		
+		MClient client=new MClient(null, null, null, null, null, new Date());
+		
+		client.rateGame(this.product, realrate);
+		
+		this.product=prd.getProduct(Integer.valueOf(idProduct));
+		
+		return "productdetail";
+		
 	}
 	
 }

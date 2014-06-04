@@ -5,14 +5,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Carrito de Compras</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/carousel.css" rel="stylesheet">
+<link rel="stylesheet" href="css/bootstrap-social.css">
+<link rel="stylesheet" href="css/font-awesome.css">
+<title>Juegos JEE|Carrito de Compras</title>
 </head>
 <body>
-
-	<%@ include file="includes/header.php" %>
+<%@ include file="includes/header.jsp" %>
 
  	<div class="row" style="padding-top: 10%; margin-bottom: 10%">
  	<div class="col-md-10 col-md-offset-1" style="background-color: #555; padding: 5px; border-radius:10px">
+ 	<h1 align="center">Tu Carrito de compras</h1>
  		<table class="table">
                 <thead>
                   <tr>
@@ -34,7 +41,18 @@
 							<th><s:property value="quantity" /></th>
 							<th><s:property value="product.prize" /></th>
 							<th><s:property value="total" /></th>
-							<th><a href="#">Borrar</a></th>
+							<th>
+								<s:form action="buyAproductInCartAction">
+									<s:hidden value="%{product.idProduct}" name="idPrd"/>
+									<s:hidden value="%{id.idcart}" name="idCrt"/>
+									<s:submit value="Comprar" cssClass="btn btn-warning"/>
+								</s:form>	
+								<s:form action="idontwanttobuyitAction">
+									<s:hidden value="%{product.idProduct}" name="idPrd"/>
+									<s:textfield value="%{id.idcart}" name="idCrt"/>
+									<s:submit value="Quitar del carrito" cssClass="btn btn-dange" />
+								</s:form>	
+							</th>
 						</tr>
 					</s:iterator>
                 </tbody>

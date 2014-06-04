@@ -1,5 +1,7 @@
 package dataAccess.DAOs;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -30,6 +32,21 @@ public class DAOProducts extends DAO{
 	
 	public List<Product> getAllProducts(){
 		return getAll(Product.class);
+	}
+	
+	public List<Product> getCatalogByConsole(Console console){
+		DAOConsoles daocns=new DAOConsoles();
+		ArrayList<Product> products=new ArrayList<Product>();
+		
+		Console cons= daocns.getConsole(console.getIdConsole());
+		
+		Iterator<Product> prd=cons.getProducts().iterator();
+		
+		while(prd.hasNext()){
+			products.add(prd.next());
+		}
+		
+		return products;
 	}
 	
 }
