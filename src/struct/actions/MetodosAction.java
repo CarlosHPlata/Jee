@@ -2,8 +2,11 @@ package struct.actions;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
 import model.roles.MAdmin;
 import model.roles.MClient;
 import model.roles.MUser;
@@ -303,9 +306,10 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 	}
 	
 	public String registerProduct() throws Exception{
-		MAdmin madmin = new MAdmin(null, null, null, null, null, new Date());
-		madmin.createProduct(getName(), getDesc(), getPrize(), getQuantity(), getImage(), null);
-		return listProducts();
+		DAOProducts daop = new DAOProducts();
+		this.product = new Product(daop.getAllProducts().size()+1, getName(), getDesc(), getPrize(), 0, getQuantity(), new Date(), getImage());
+		daop.createProduct(this.product);
+		return "registry_successful";
 	}
 	
 	public String editInfoProduct() throws Exception{
