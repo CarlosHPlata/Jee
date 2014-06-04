@@ -7,8 +7,10 @@ import java.util.Map;
 import java.util.Set;
 
 
+
 import javax.servlet.http.HttpServletRequest;
 
+import model.roles.MAdmin;
 import model.roles.MClient;
 import model.roles.MUser;
 
@@ -642,5 +644,57 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 		return "productdetail";
 		
 	}
+	
+	//acciones de estadisticos
+	private String agerate;
+	private double soldPercentage;
+	private double numberSolds;
+	
+	
+	public String estadistics() throws Exception{
+		String[] temp=(String[]) ActionContext.getContext().getParameters().get("idProduct");
+		String idProduct="";
+		for(int i=0; i<temp.length;i++){
+			idProduct+=temp[i];
+		}
+		
+		DAOProducts prd=new DAOProducts();
+		
+		this.product=prd.getProduct(Integer.valueOf(idProduct));
+		
+		MAdmin ad=new MAdmin(null, null, null, null, null, new Date());
+		
+		this.numberSolds=ad.getNumberOfSolds(this.product);
+		this.soldPercentage=ad.getSoldPercentage(this.product);
+		this.agerate=ad.ageRangeSolds(this.product);
+		
+		return "stats";
+	}
+
+	public String getAgerate() {
+		return agerate;
+	}
+
+	public void setAgerate(String agerate) {
+		this.agerate = agerate;
+	}
+
+	public double getSoldPercentage() {
+		return soldPercentage;
+	}
+
+	public void setSoldPercentage(double soldPercentage) {
+		this.soldPercentage = soldPercentage;
+	}
+
+	public double getNumberSolds() {
+		return numberSolds;
+	}
+
+	public void setNumberSolds(double numberSolds) {
+		this.numberSolds = numberSolds;
+	}
+	
+	
 	
 }
