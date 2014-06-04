@@ -57,12 +57,6 @@
 			    <li><a href="initAction">Iniciar sesion</a></li>
 			    
 			  </s:if><s:else>
-			  
-			  	<li><a href="displayWishListAction">WishList</a></li>
-			    <li><a href="displayShoppingCartAction">ShoppingCart</a></li>
-			    <li><a href="displayBuyHistoryAction">Historial de compras</a></li>
-			    
-			    <li class="divider"></li>
 			    
 			    <li class="dropdown-submenu">
 			    	<a href="#">Informacion de perfil</a>
@@ -71,8 +65,6 @@
 			    		<li><a href="editLoginPasswordAction">Editar nombre usuario y contraseña</a></li>
 			    	</ul>
 			    </li>
-			    <li><a href="#">Formas de pago</a></li>
-			    <li><a href="#">Direcciones de envio</a></li>
 			    
 			    <s:if test="#session['muser'].type==true">
 			    	<li class="divider"></li>
@@ -84,7 +76,12 @@
 				        </ul>
 				    </li>
 				    <li><a href="listUsersAction">Listar usuarios</a></li>
-			    </s:if>
+			    </s:if><s:else>
+			    	<li class="divider"></li>
+				  	<li><a href="displayWishListAction">WishList</a></li>
+				    <li><a href="displayShoppingCartAction">ShoppingCart</a></li>
+				    <li><a href="displayBuyHistoryAction">Historial de compras</a></li>
+			    </s:else>
 			  
 			  	<li class="divider"></li>
 			  	<li><a href="logoutAction">Cerrar Sesion</a></li>

@@ -86,7 +86,7 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 		muser.setEmail(getEmail());
 		DAOUsuarios daou=new DAOUsuarios();
 		daou.updateUser(muser);
-		return "success_update";
+		return "index";
 	}
 	
 	public String editLoginPassword() throws Exception {
@@ -284,7 +284,7 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 		this.muser.setEmail(getEmail());
 		this.muser.setBirthDate(getBirthDate());
 		dau.updateUser(this.muser);
-		return "success";
+		return listUsers();
 	}
 	
 	public String deleteUser() throws Exception{
@@ -296,7 +296,7 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 		DAOUsuarios daousers = new DAOUsuarios();
 		this.muser = daousers.getUserById(Integer.parseInt(idUser), false);
 		daousers.deleteUser(this.muser);
-		return "success";
+		return listUsers();
 	}
 	
 	public String editInfoProduct() throws Exception{
@@ -320,7 +320,7 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 		this.product.setCreationDate(getCreationDate());
 		this.product.setImage(getImage());
 		daop.updateProduct(this.product);
-		return "success";
+		return listProducts();
 	}
 	
 	public String deleteProduct() throws Exception{
@@ -332,7 +332,7 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 		DAOProducts daop = new DAOProducts();
 		this.product = daop.getProduct(Integer.parseInt(idProduct));
 		daop.deleteProduct(this.product);
-		return "success";
+		return listProducts();
 	}
 	
 	public List<MUser> getUsers(){

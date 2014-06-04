@@ -5,11 +5,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/carousel.css" rel="stylesheet">
+<link rel="stylesheet" href="css/bootstrap-social.css">
+<link rel="stylesheet" href="css/font-awesome.css">
 <title>Editar Cliente</title>
 </head>
 <body>
 
-	<%@ include file="includes/header.php" %>
+	<%@ include file="includes/header.jsp" %>
 
  	<div class="row" style="padding-top: 10%; margin-bottom: 10%">
  	<div class="col-md-3 col-md-offset-4" style="background-color: #555; padding: 5px; border-radius:10px">
