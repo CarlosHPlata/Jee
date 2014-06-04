@@ -49,6 +49,8 @@
 					</s:iterator>
 				</tbody>
 			</table>
+			
+		<a href="listConsolesOnProductAction">Registra un Producto</a>
 		</div>
 	</div>
 

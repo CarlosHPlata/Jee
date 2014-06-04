@@ -28,7 +28,9 @@
 			<result name="success">/prueba.jsp </result>
 			<result name="editProduct">/editInfoProduct.jsp </result>
 			<result name="editClient">/editInfoUser.jsp </result>
+			<result name="editConsole">/editInfoConsole.jsp </result>
 			<result name="registry_successful">/successfulRegistry.jsp</result>
+			<result name="registerProduct">/registroProducto.jsp</result>
 			<result name="catalog">/Catalog.jsp </result>
 			<result name="productdetail">/productDetail.jsp</result>
 			<result name="stats">/stadistics.jsp</result>

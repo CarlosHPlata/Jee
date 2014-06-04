@@ -4,17 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
-
-
-import javax.servlet.http.HttpServletRequest;
-
 import model.roles.MAdmin;
 import model.roles.MClient;
 import model.roles.MUser;
 
-import org.apache.catalina.connector.Request;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -239,8 +232,10 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 	private List<MUser> users;
 	private Product product;
 	private MUser muser;
+	private Console console;
 	private int idProduct;
 	private int idUser;
+	private int idConsole;
 	private String desc;
 	private float prize;
 	private int quantity;
@@ -265,6 +260,12 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 		DAOConsoles daoconsoles = new DAOConsoles();
 		setConsoles(daoconsoles.getAllConsoles());
 		return "displayConsolesList";
+	}
+	
+	public String listConsolesOnProduct() throws Exception{
+		DAOConsoles daoconsoles = new DAOConsoles();
+		setConsoles(daoconsoles.getAllConsoles());
+		return "registerProduct";
 	}
 	
 	public String editInfoUser() throws Exception{
@@ -301,6 +302,12 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 		return listUsers();
 	}
 	
+	public String registerProduct() throws Exception{
+		MAdmin madmin = (MAdmin)ActionContext.getContext().getSession().get("muser");
+		madmin.createProduct(getName(), getDesc(), getPrize(), getQuantity(), getImage(), null);
+		return "registry_successful";
+	}
+	
 	public String editInfoProduct() throws Exception{
 		String[] temp = (String[])ActionContext.getContext().getParameters().get("idProduct");
 		String idProduct = "";
@@ -335,6 +342,32 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 		this.product = daop.getProduct(Integer.parseInt(idProduct));
 		daop.deleteProduct(this.product);
 		return listProducts();
+	}
+	
+	public String registerConsole() throws Exception{
+		DAOConsoles daoc = new DAOConsoles();
+		this.console = new Console(daoc.getAllConsoles().size()+1, getName());
+		daoc.createConsole(this.console);
+		return "registry_successful";
+	}
+	
+	public String editInfoConsole() throws Exception{
+		String[] temp = (String[])ActionContext.getContext().getParameters().get("idConsole");
+		String idConsole = "";
+		for (int i = 0; i < temp.length; i++) {
+			idConsole += temp[i];
+		}
+		DAOConsoles daoc = new DAOConsoles();
+		this.console = daoc.getConsole(Integer.parseInt(idConsole));
+		return "editConsole";
+	}
+	
+	public String updateInfoConsole() throws Exception{
+		DAOConsoles daoc = new DAOConsoles();
+		this.console = daoc.getConsole(getIdConsole());
+		this.console.setCompany(getName());
+		daoc.updateConsole(this.console);
+		return "success";
 	}
 	
 	public List<MUser> getUsers(){
@@ -377,6 +410,14 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 		this.muser = muser;
 	}
 
+	public Console getConsole() {
+		return console;
+	}
+
+	public void setConsole(Console console) {
+		this.console = console;
+	}
+
 	public int getIdProduct() {
 		return idProduct;
 	}
@@ -391,6 +432,14 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 
 	public void setIdUser(int idUser) {
 		this.idUser = idUser;
+	}
+
+	public int getIdConsole() {
+		return idConsole;
+	}
+
+	public void setIdConsole(int idConsole) {
+		this.idConsole = idConsole;
 	}
 
 	public String getDesc() {

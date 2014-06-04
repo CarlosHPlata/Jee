@@ -36,6 +36,7 @@ public class Product implements java.io.Serializable {
 		this.stars = stars;
 		this.quantity = quantity;
 		this.creationDate = creationDate;
+		this.image = image;
 	}
 
 	public Product(int idProduct, String name, String desc, float prize,
@@ -48,6 +49,7 @@ public class Product implements java.io.Serializable {
 		this.stars = stars;
 		this.quantity = quantity;
 		this.creationDate = creationDate;
+		this.image = image;
 		this.wishlists = wishlists;
 		this.shoppingcarhistories = shoppingcarhistories;
 		this.consoles = consoles;

@@ -12,7 +12,7 @@
 <link href="css/carousel.css" rel="stylesheet">
 <link rel="stylesheet" href="css/bootstrap-social.css">
 <link rel="stylesheet" href="css/font-awesome.css">
-<title>Editar Cliente</title>
+<title>Registro Cliente</title>
 </head>
 <body>
 

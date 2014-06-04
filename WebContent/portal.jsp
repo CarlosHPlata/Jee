@@ -142,8 +142,9 @@
 				<a href="displayShoppingCartAction">Ver mi Carrito de Compras</a>
 			</p>
 			<p>
-				<a href="displayBuyHistoryAction">Ver mi Historial de Compras</a>
+				<a href="listConsolesOnProductAction">Ver mi Historial de Compras</a>
 			</p>
+			
 		</div>
 	</div>
 
