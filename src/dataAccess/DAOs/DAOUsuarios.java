@@ -64,7 +64,7 @@ public class DAOUsuarios extends DAO{
 	}
 	
 	public void deleteUser(MUser user){
-		MUser userdelete=getUserById(user.getId(), user.isAdmin());
+		MUser userdelete=getUserById(user.getId(), user.isType());
 		
 		delete( getEntitieFromMUser(userdelete) );
 	}
@@ -74,7 +74,7 @@ public class DAOUsuarios extends DAO{
 		List<MClient> result=new ArrayList<MClient>();
 		
 		for(int i=0; i<all.size(); i++){
-			if(!all.get(i).isAdmin()){
+			if(!all.get(i).isType()){
 				result.add((MClient)all.get(i));
 			}
 		}
@@ -108,7 +108,7 @@ public class DAOUsuarios extends DAO{
 	}
 	
 	public User getEntitieFromMUser(MUser user){
-		return new User(((user.getId()==-1)?(getAllUsers().size()+1):user.getId()), user.isAdmin(), user.getUserName(), user.getPassWord(), user.getName(),
+		return new User(((user.getId()==-1)?(getAllUsers().size()+1):user.getId()), user.isType(), user.getUserName(), user.getPassWord(), user.getName(),
 			user.getLastName(), user.getEmail(), user.getBirthDate());
 	}
 	
