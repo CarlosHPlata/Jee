@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import model.roles.MAdmin;
 import model.roles.MClient;
 import model.roles.MUser;
 
@@ -251,6 +252,12 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 		return "displayConsolesList";
 	}
 	
+	public String listConsolesOnProduct() throws Exception{
+		DAOConsoles daoconsoles = new DAOConsoles();
+		setConsoles(daoconsoles.getAllConsoles());
+		return "registerProduct";
+	}
+	
 	public String editInfoUser() throws Exception{
 		String[] temp = (String[])ActionContext.getContext().getParameters().get("idUser");
 		String idUser = "";
@@ -286,9 +293,8 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 	}
 	
 	public String registerProduct() throws Exception{
-		DAOProducts daop = new DAOProducts();
-		this.product = new Product(daop.getAllProducts().size()+1, getName(), getDesc(), getPrize(), 0, getQuantity(), new Date(), getImage());
-		daop.createProduct(this.product);
+		MAdmin madmin = (MAdmin)ActionContext.getContext().getSession().get("muser");
+		madmin.createProduct(getName(), getDesc(), getPrize(), getQuantity(), getImage(), getConsoles());
 		return "registry_successful";
 	}
 	

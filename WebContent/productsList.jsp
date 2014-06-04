@@ -43,7 +43,7 @@
 				</tbody>
 			</table>
 			
-		<a href="./registroProducto.jsp">Registra un Producto</a>
+		<a href="listConsolesOnProductAction">Registra un Producto</a>
 		</div>
 	</div>
 

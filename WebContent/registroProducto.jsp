@@ -20,6 +20,7 @@
 			<s:textfield cssClass="form-control" name="prize" label="Precio"/>
 			<s:textfield cssClass="form-control" name="quantity" label="Cantidad"/>
 			<s:textfield cssClass="form-control" name="image" label="Imagen"/>
+			<s:select name="console" label="Consola" list="consoles" listValue="company" />
 			<s:submit cssClass="btn btn-default" value="Registrar"/>
 		</s:form>
  	</div>

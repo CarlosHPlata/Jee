@@ -29,6 +29,8 @@
 			<result name="editProduct">/editInfoProduct.jsp </result>
 			<result name="editClient">/editInfoUser.jsp </result>
 			<result name="registry_successful">/successfulRegistry.jsp</result>
+			<result name="registerProduct">/registroProducto.jsp</result>
+			
 		</action>
 
 	</package>
