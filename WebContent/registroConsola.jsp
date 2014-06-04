@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Registro Cliente</title>
+<title>Registrar Consola</title>
 </head>
 <body>
 
@@ -13,14 +13,9 @@
 
  	<div class="row" style="padding-top: 10%; margin-bottom: 10%">
  	<div class="col-md-3 col-md-offset-4" style="background-color: #555; padding: 5px; border-radius:10px">
- 		<h3>Bienvenido. Por favor, llene el formulario para registrarse</h3>
- 		<s:form action="registerClientAction">
-			<s:textfield cssClass="form-control" name="userName" label="Nombre de Usuario"/>
-			<s:textfield cssClass="form-control" name="passWord" label="Contraseña"/>
-			<s:textfield cssClass="form-control" name="name" label="Nombres"/>
-			<s:textfield cssClass="form-control" name="lastName" label="Apellidos"/>
-			<s:textfield cssClass="form-control" name="email" label="Correo Electrónico"/>
-			<s:textfield cssClass="form-control" name="birthDate" label="Fecha de Nacimiento"/>
+ 		<h3>Bienvenido. Por favor, llene el formulario para registrar la consola</h3>
+ 		<s:form action="registerConsoleAction">
+			<s:textfield cssClass="form-control" name="name" label="Nombre"/>
 			<s:submit cssClass="btn btn-default" value="Registrar"/>
 		</s:form>
  	</div>

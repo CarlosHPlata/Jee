@@ -224,6 +224,7 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 	private List<Console> consoles;
 	private Product product;
 	private MUser muser;
+	private Console console;
 	private int idProduct;
 	private int idUser;
 	private String desc;
@@ -284,6 +285,13 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 		return "success";
 	}
 	
+	public String registerProduct() throws Exception{
+		DAOProducts daop = new DAOProducts();
+		this.product = new Product(daop.getAllProducts().size()+1, getName(), getDesc(), getPrize(), 0, getQuantity(), new Date(), getImage());
+		daop.createProduct(this.product);
+		return "registry_successful";
+	}
+	
 	public String editInfoProduct() throws Exception{
 		String[] temp = (String[])ActionContext.getContext().getParameters().get("idProduct");
 		String idProduct = "";
@@ -318,6 +326,13 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 		this.product = daop.getProduct(Integer.parseInt(idProduct));
 		daop.deleteProduct(this.product);
 		return "success";
+	}
+	
+	public String registerConsole() throws Exception{
+		DAOConsoles daoc = new DAOConsoles();
+		this.console = new Console(daoc.getAllConsoles().size()+1, getName());
+		daoc.createConsole(this.console);
+		return "registry_successful";
 	}
 	
 	public List<MUser> getUsers(){
@@ -358,6 +373,14 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 
 	public void setMuser(MUser muser) {
 		this.muser = muser;
+	}
+
+	public Console getConsole() {
+		return console;
+	}
+
+	public void setConsole(Console console) {
+		this.console = console;
 	}
 
 	public int getIdProduct() {

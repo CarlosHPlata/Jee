@@ -42,6 +42,8 @@
 					</s:iterator>
 				</tbody>
 			</table>
+			
+		<a href="./registroProducto.jsp">Registra un Producto</a>
 		</div>
 	</div>
 
