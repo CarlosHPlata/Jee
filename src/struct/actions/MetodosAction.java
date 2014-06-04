@@ -1,14 +1,17 @@
 package struct.actions;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import model.roles.MClient;
 import model.roles.MUser;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import dataAccess.DAOs.DAOConsoles;
@@ -219,6 +222,15 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 	private List<MUser> users;
 	private List<Product> products;
 	private List<Console> consoles;
+	private Product product;
+	private MUser mclient;
+	private int idProduct;
+	private int idClient;
+	private String desc;
+	private float prize;
+	private int quantity;
+	private Date creationDate;
+	private String image;
 	
 	public String listUsers() throws Exception{
 		DAOUsuarios daousers = new DAOUsuarios();
@@ -238,12 +250,82 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 		return "displayConsolesList";
 	}
 	
+	public String editInfoUser() throws Exception{
+		String[] temp = (String[])ActionContext.getContext().getParameters().get("idUser");
+		String idUser = "";
+		for (int i = 0; i < temp.length; i++) {
+			idUser += temp[i];
+		}
+		DAOUsuarios daousers = new DAOUsuarios();
+		this.mclient = daousers.getUserById(Integer.parseInt(idUser), false);
+		return "editClient";
+	}
+	
+	public String updateInfoUser() throws Exception{
+		DAOUsuarios dau = new DAOUsuarios();
+		this.mclient = dau.getUserById(getIdClient(), false);
+		this.mclient.setName(getName());
+		this.mclient.setLastName(getLastName());
+		this.mclient.setEmail(getEmail());
+		this.mclient.setBirthDate(getBirthDate());
+		dau.updateUser(this.mclient);
+		return "success";
+	}
+	
+	public String deleteUser() throws Exception{
+		String[] temp = (String[])ActionContext.getContext().getParameters().get("idUser");
+		String idUser = "";
+		for (int i = 0; i < temp.length; i++) {
+			idUser += temp[i];
+		}
+		DAOUsuarios daousers = new DAOUsuarios();
+		this.mclient = daousers.getUserById(Integer.parseInt(idUser), false);
+		daousers.deleteUser(this.mclient);
+		return "success";
+	}
+	
+	public String editInfoProduct() throws Exception{
+		String[] temp = (String[])ActionContext.getContext().getParameters().get("idProduct");
+		String idProduct = "";
+		for (int i = 0; i < temp.length; i++) {
+			idProduct += temp[i];
+		}
+		DAOProducts daop = new DAOProducts();
+		this.product = daop.getProduct(Integer.parseInt(idProduct));
+		return "editProduct";
+	}
+	
+	public String updateInfoProduct() throws Exception{
+		DAOProducts daop = new DAOProducts();
+		this.product = daop.getProduct(getIdProduct());
+		this.product.setName(getName());
+		this.product.setDesc(getDesc());
+		this.product.setPrize(getPrize());
+		this.product.setQuantity(getQuantity());
+		this.product.setCreationDate(getCreationDate());
+		this.product.setImage(getImage());
+		daop.updateProduct(this.product);
+		return "success";
+	}
+	
+	public String deleteProduct() throws Exception{
+		String[] temp = (String[])ActionContext.getContext().getParameters().get("idProduct");
+		String idProduct = "";
+		for (int i = 0; i < temp.length; i++) {
+			idProduct += temp[i];
+		}
+		DAOProducts daop = new DAOProducts();
+		this.product = daop.getProduct(Integer.parseInt(idProduct));
+		daop.deleteProduct(this.product);
+		return "success";
+	}
+	
 	public List<MUser> getUsers(){
 		return users;
 	}
 	
-	public void setUsers(List<MUser> users){
-		this.users = users;
+	public void setUsers(List<MUser> clients){
+		this.users = clients;
 	}
 
 	public List<Product> getProducts() {
@@ -261,5 +343,79 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 	public void setConsoles(List<Console> consoles) {
 		this.consoles = consoles;
 	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public MUser getMclient() {
+		return mclient;
+	}
+
+	public void setMclient(MUser mclient) {
+		this.mclient = mclient;
+	}
+
+	public int getIdProduct() {
+		return idProduct;
+	}
+
+	public void setIdProduct(int idProduct) {
+		this.idProduct = idProduct;
+	}
+
+	public int getIdClient() {
+		return idClient;
+	}
+
+	public void setIdClient(int idClient) {
+		this.idClient = idClient;
+	}
+
+	public String getDesc() {
+		return desc;
+	}
+
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
+
+	public float getPrize() {
+		return prize;
+	}
+
+	public void setPrize(float prize) {
+		this.prize = prize;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+	
+	
 	
 }

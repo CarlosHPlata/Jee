@@ -35,7 +35,10 @@
 							<th><s:property value="lastName" /></th>
 							<th><s:property value="email" /></th>
 							<th><s:property value="birthDate" /></th>
-							<th><a href="#">Editar Borrar</a></th>
+							<th>
+								<a href="editInfoUserAction?idUser=<s:property value="id" />">Editar </a>
+								<a href="deleteUserAction?idUser=<s:property value="id" />">Borrar</a>
+							</th>
 						</tr>
 					</s:iterator>
 				</tbody>

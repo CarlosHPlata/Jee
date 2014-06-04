@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Editar Producto</title>
+<title>Editar Cliente</title>
 </head>
 <body>
 
@@ -13,14 +13,12 @@
 
  	<div class="row" style="padding-top: 10%; margin-bottom: 10%">
  	<div class="col-md-5 col-md-offset-3" style="background-color: #555; padding: 5px; border-radius:10px">
- 		<s:form action="updateInfoProductAction">
-			<s:hidden name="idProduct" value="%{product.idProduct}"/>
-			<s:textfield cssClass="form-control" name="name" label="Nombre" value="%{product.name}"/>
-			<s:textarea cssClass="form-control" name="desc" label="Descripción" value="%{product.desc}"/>
-			<s:textfield cssClass="form-control" name="prize" label="Precio" value="%{product.prize}"/>
-			<s:textfield cssClass="form-control" name="quantity" label="Cantidad" value="%{product.quantity}"/>
-			<s:textfield cssClass="form-control" name="creationDate" label="Fecha de Creación" value="%{product.creationDate}"/>
-			<s:textfield cssClass="form-control" name="image" label="Imagen" value="%{product.image}"/>
+ 		<s:form action="updateInfoUserAction">
+			<s:hidden name="idClient" value="%{mclient.id}"/>
+			<s:textfield cssClass="form-control" name="name" label="Nombres" value="%{mclient.name}"/>
+			<s:textfield cssClass="form-control" name="lastName" label="Apellidos" value="%{mclient.lastName}"/>
+			<s:textfield cssClass="form-control" name="email" label="Correo Electrónico" value="%{mclient.email}"/>
+			<s:textfield cssClass="form-control" name="birthDate" label="Fecha de Nacimiento" value="%{mclient.birthDate}"/>
 			<s:submit cssClass="btn btn-default" value="Actualizar"/>
 		</s:form>
  	</div>

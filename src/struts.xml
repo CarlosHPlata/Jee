@@ -25,6 +25,9 @@
 			<result name="displayProductsList">/productsList.jsp</result>
 			<result name="displayConsolesList">/consolesList.jsp</result>
 			<result name="index">/principal.jsp </result>
+			<result name="success">/prueba.jsp </result>
+			<result name="editProduct">/editInfoProduct.jsp </result>
+			<result name="editClient">/editInfoUser.jsp </result>
 		</action>
 
 	</package>

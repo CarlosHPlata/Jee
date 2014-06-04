@@ -34,7 +34,10 @@
 							<th><s:property value="stars" /></th>
 							<th><s:property value="quantity" /></th>
 							<th><s:property value="creationDate" /></th>
-							<th><a href="#">Editar Borrar</a></th>
+							<th>
+								<a href="editInfoProductAction?idProduct=<s:property value="idProduct" />">Editar </a>
+								<a href="deleteProductAction?idProduct=<s:property value="idProduct" />">Borrar</a>
+							</th>
 						</tr>
 					</s:iterator>
 				</tbody>
