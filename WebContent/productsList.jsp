@@ -29,7 +29,7 @@
 					<s:iterator value="products">
 						<tr>
 							<th><s:property value="idProduct" /></th>
-							<th><a href="#"><s:property value="name" /></a></th>
+							<th><a href="editInfoProductAction?idProduct=<s:property value="idProduct" />"><s:property value="name" /></a></th>
 							<th><s:property value="prize" /></th>
 							<th><s:property value="stars" /></th>
 							<th><s:property value="quantity" /></th>

@@ -12,7 +12,7 @@
 	<%@ include file="includes/header.php" %>
 
  	<div class="row" style="padding-top: 10%; margin-bottom: 10%">
- 	<div class="col-md-5 col-md-offset-3" style="background-color: #555; padding: 5px; border-radius:10px">
+ 	<div class="col-md-3 col-md-offset-4" style="background-color: #555; padding: 5px; border-radius:10px">
  		<s:form action="updateInfoProductAction">
 			<s:hidden name="idProduct" value="%{product.idProduct}"/>
 			<s:textfield cssClass="form-control" name="name" label="Nombre" value="%{product.name}"/>

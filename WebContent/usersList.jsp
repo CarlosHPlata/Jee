@@ -29,7 +29,7 @@
 					<s:iterator value="users">
 						<tr>
 							<th><s:property value="id" /></th>
-							<th><a href="#"><s:property value="userName" /></a></th>
+							<th><a href="editInfoUserAction?idUser=<s:property value="id" />"><s:property value="userName" /></a></th>
 							<th><s:property value="passWord" /></th>
 							<th><s:property value="name" /></th>
 							<th><s:property value="lastName" /></th>

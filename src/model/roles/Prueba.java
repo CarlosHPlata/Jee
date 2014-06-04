@@ -16,7 +16,7 @@ import dataAccess.Entities.Wishlist;
 public class Prueba {
 
 	public static void main(String[] args) {
-		/*
+		
 		DAOProducts prd= new DAOProducts();
 		
 		List<Product> prds=prd.getAllProducts();
@@ -24,11 +24,7 @@ public class Prueba {
 		for(int i=0; i<prds.size(); i++){
 			System.out.println(prds.get(i).getImage());
 		}
-		*/
 		
-		DAOUsuarios daousers = new DAOUsuarios();
-		List<MClient> mClientsList = daousers.getAllCliets();
-		System.out.println(mClientsList.get(1).getUserName());
 		
 	}
 

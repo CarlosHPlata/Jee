@@ -12,13 +12,13 @@
 	<%@ include file="includes/header.php" %>
 
  	<div class="row" style="padding-top: 10%; margin-bottom: 10%">
- 	<div class="col-md-5 col-md-offset-3" style="background-color: #555; padding: 5px; border-radius:10px">
+ 	<div class="col-md-3 col-md-offset-4" style="background-color: #555; padding: 5px; border-radius:10px">
  		<s:form action="updateInfoUserAction">
-			<s:hidden name="idClient" value="%{mclient.id}"/>
-			<s:textfield cssClass="form-control" name="name" label="Nombres" value="%{mclient.name}"/>
-			<s:textfield cssClass="form-control" name="lastName" label="Apellidos" value="%{mclient.lastName}"/>
-			<s:textfield cssClass="form-control" name="email" label="Correo Electrónico" value="%{mclient.email}"/>
-			<s:textfield cssClass="form-control" name="birthDate" label="Fecha de Nacimiento" value="%{mclient.birthDate}"/>
+			<s:hidden name="idUser" value="%{muser.id}"/>
+			<s:textfield cssClass="form-control" name="name" label="Nombres" value="%{muser.name}"/>
+			<s:textfield cssClass="form-control" name="lastName" label="Apellidos" value="%{muser.lastName}"/>
+			<s:textfield cssClass="form-control" name="email" label="Correo Electrónico" value="%{muser.email}"/>
+			<s:textfield cssClass="form-control" name="birthDate" label="Fecha de Nacimiento" value="%{muser.birthDate}"/>
 			<s:submit cssClass="btn btn-default" value="Actualizar"/>
 		</s:form>
  	</div>
