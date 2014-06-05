@@ -51,6 +51,7 @@
 					</s:iterator>
 				</tbody>
 			</table>
+			<a href="./registroCliente.jsp">Registra un Cliente</a>
 		</div>
 	</div>
 

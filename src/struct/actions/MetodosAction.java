@@ -490,7 +490,7 @@ public class MetodosAction extends ActionSupport implements SessionAware {
 	private MClient mclient;
 	
 	public String registerClient(){
-		this.mclient = new MClient(getUserName(), getPassWord(), getName(), getLastName(), getEmail(), new Date());
+		this.mclient = new MClient(getUserName(), getPassWord(), getName(), getLastName(), getEmail(), getBirthDate());
 		DAOUsuarios daou = new DAOUsuarios();
 		daou.createUser(this.mclient);
 		return "registry_successful";
